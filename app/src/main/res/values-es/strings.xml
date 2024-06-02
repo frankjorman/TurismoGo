@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TurismoGO</string>
+
+    <string name="success_account_creation">Cuenta creada satisfactoriamente</string>
+
+    <string name="invalid_username">No es un nombre válido de usuario</string>
+    <string name="invalid_password">La contraseña debe tener mas de 5 caracteres</string>
+    <string name="login_failed">Inicio de sesión fallido</string>
+    <string name="invalid_selection">Primero debes seleccionar una opción</string>
+
+
+    <string name="prompt_email">Correo</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="prompt_names">Nombres</string>
+    <string name="prompt_last_names">Apellidos</string>
+    <string name="prompt_document_id">Documento de Identidad</string>
+    <string name="prompt_phone">Teléfono</string>
+    <string name="prompt_legal_id">R.U.C.</string>
+    <string name="prompt_city">Ciudad</string>
+    <string name="prompt_names_lastnames">Nombres y Apellidos</string>
+    <string name="prompt_business_role">Cargo en la Empresa</string>
+    <string name="prompt_business_name">Nombre de la Empresa</string>
+    <string name="prompt_profile">Perfil</string>
+    <string name="prompt_history">Historia</string>
+    <string name="prompt_options">Opciones</string>
+
+    <string name="action_sign_in">Inicio de sesión</string>
+    <string name="action_continue">Continuar</string>
+    <string name="action_forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="action_register_account">Presiona Aquí</string>
+    <string name="action_terms_conditions">Términos y Condiciones</string>
+    <string name="action_privacy_policies">Políticas de Privacidad</string>
+    <string name="action_terms_and_privacy">Términos y Políticas de Privacidad</string>
+    <string name="action_accept">Aceptar</string>
+    <string name="action_recover_account">Recuperar cuenta</string>
+
+    <string name="login">Inicio de sesión</string>
+    <string name="register_new_account">¿Aún no tienes cuenta?</string>
+    <string name="terms">Al iniciar sesión o crear una cuenta estas aceptando nuestros</string>
+    <string name="terms_connection">y</string>
+    <string name="business_signature">2024 TurismoGO</string>
+    <string name="register_business">Crear cuenta de Empresa</string>
+    <string name="register_user">Crear cuenta de Usuario</string>
+    <string name="accepting_terms">Yo Acepto</string>
+    <string name="recover_account">Recuperar tu Cuenta</string>
+    <string name="select">Seleecione</string>
+    <string name="business_account">Cuenta de Empresa</string>
+    <string name="user_account">Cuenta de Usuario</string>
+    <string name="selection_role">Selección de Rol</string>
+
+    <string name="placeholder_required_hint">*Requerido</string>
+    <string name="placeholder_button">Botón</string>
+    <string name="placeholder_title">Título</string>
+    <string name="placeholder_subtitle">Subtítulo</string>
+    <string name="placeholder_building">En Construcción</string>
+
+    <string-array name="account_type">
+        <item>Cuenta de Empresa</item>
+        <item>Cuenta de Usuario</item>
+    </string-array>
+</resources>

@@ -1,12 +1,76 @@
 <resources>
-    <string name="app_name">TurismoGo</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+
+    <string name="app_name">Tourism Go</string>
+
+    <string name="title_activity_login2" translatable="false">LoginActivity2</string>
+
+    <string name="success_account_creation">Account created successfully</string>
+
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_selection">You must select an option first</string>
+
+
     <string name="login_failed">"Login failed"</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_names">Names</string>
+    <string name="prompt_last_names">Last Names</string>
+    <string name="prompt_document_id">Document ID</string>
+    <string name="prompt_phone">Phone</string>
+    <string name="prompt_legal_id">RUC</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_names_lastnames">Names and Lastnames</string>
+    <string name="prompt_business_role">Business Role</string>
+    <string name="prompt_business_name">Business name</string>
+    <string name="prompt_dashboard" translatable="false">Dashboard</string>
+    <string name="prompt_profile">Profile</string>
+    <string name="prompt_history">History</string>
+    <string name="prompt_options">Options</string>
+
+
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_forgot_password">Forgot your password?</string>
+    <string name="action_register_account">Press here</string>
+    <string name="action_terms_conditions">Terms &amp; Conditions</string>
+    <string name="action_privacy_policies">Privacy policies</string>
+    <string name="action_terms_and_privacy">Terms &amp; Privacy policies</string>
+    <string name="action_accept">Accept</string>
+    <string name="action_recover_account">Recover Account</string>
+
+
+    <string name="login">"Login"</string>
+    <string name="register_new_account">You don\'t have an account yet?</string>
+    <string name="terms">By login or creating an account with us you are accepting our</string>
+    <string name="terms_connection">and</string>
+    <string name="business_signature">2024 TourismGO</string>
+    <string name="register_business">Create business account</string>
+    <string name="register_user">Create user account</string>
+    <string name="accepting_terms">I Accept</string>
+    <string name="recover_account">Recover your account</string>
+    <string name="select">Select</string>
+    <string name="business_account">Business Account</string>
+    <string name="user_account">User Account</string>
+    <string name="selection_role">Selection Role</string>
+
+    <string name="placeholder_required_hint">* Required</string>
+    <string name="placeholder_button">Button</string>
+    <string name="placeholder_title">Title</string>
+    <string name="placeholder_subtitle">Subtitle</string>
+    <string name="placeholder_address" translatable="false">Jr. Juan de Arona 565 - San Isidro</string>
+    <string name="placeholder_building">Under Construction</string>
+
+
+
+
+    <string-array name="account_type">
+        <item>Business Account</item>
+        <item>User Account</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+
 </resources>

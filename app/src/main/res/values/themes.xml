@@ -1,9 +1,129 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TurismoGo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.TurismoGo" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.TurismoGo" parent="Base.Theme.TurismoGo" />
+    <style name="Text.Title" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.Title.Big" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="Text.Title.Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Title.Bold.Big" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Subtitle.Italic" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Text.Subtitle.Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Subtitle" parent="Widget.MaterialComponents.TextView">
+    </style>
+
+    <style name="Card.Main" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">5dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="Button.Filled" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="color">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Button.IconNatural" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="iconSize">24dp</item>
+
+    </style>
+
+    <style name="Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="color">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Input.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorIconDrawable">@drawable/icon_error_outlined</item>
+    </style>
+
+    <style name="Input.Outlined.NoError" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="Input.Outlined.Required" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="helperTextTextColor">?attr/colorPrimary</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="helperText">@string/placeholder_required_hint</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorIconDrawable">@drawable/icon_error_outlined</item>
+    </style>
+
+    <style name="Input.Outlined.Dropdown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="helperTextTextColor">?attr/colorPrimary</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorIconDrawable">@drawable/icon_error_outlined</item>
+    </style>
+
+    <style name="Input.Outlined.Dropdown.Required" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="helperTextTextColor">?attr/colorPrimary</item>
+        <item name="android:layout_marginHorizontal" tools:targetApi="o">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="helperText">@string/placeholder_required_hint</item>
+        <item name="errorEnabled">true</item>
+        <item name="errorIconDrawable">@drawable/icon_error_outlined</item>
+    </style>
+
+    <style name="ShapeOverlay.Squared" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="FloatingButton.Squared" parent="Widget.MaterialComponents.ExtendedFloatingActionButton.Icon">
+        <item name="shapeAppearanceOverlay">@style/ShapeOverlay.Squared</item>
+    </style>
+
+    <style name="RoundImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
 </resources>

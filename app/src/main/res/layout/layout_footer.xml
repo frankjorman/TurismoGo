@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/Text.Subtitle.Italic"
+        android:id="@+id/tvGeneralTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"
+        android:text="@string/terms"/>
+
+    <LinearLayout
+        android:id="@+id/llOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="8"
+        android:layout_below="@id/tvGeneralTitle"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/Text.Subtitle.Bold"
+            android:id="@+id/tvTermsAndConditions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewEnd"
+            android:layout_weight="3.5"
+            android:text="@string/action_terms_conditions"/>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/Text.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:text="@string/terms_connection"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            style="@style/Text.Subtitle.Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3.5"
+            android:text="@string/action_privacy_policies"/>
+
+    </LinearLayout>
+
+
+
+
+    <com.google.android.material.textview.MaterialTextView
+        style="@style/Text.Subtitle"
+        android:id="@+id/tvBusinessSignature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/llOptions"
+        android:textAlignment="center"
+        android:text="@string/business_signature"/>
+
+
+</RelativeLayout>
