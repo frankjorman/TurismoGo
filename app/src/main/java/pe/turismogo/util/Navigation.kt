@@ -2,7 +2,9 @@ package pe.turismogo.util
 
 import android.content.Context
 import android.content.Intent
-import pe.turismogo.usecases.home.HomeActivity
+import pe.turismogo.usecases.admin.home.HomeAdminActivity
+import pe.turismogo.usecases.admin.panel.events.AdminEventsActivity
+import pe.turismogo.usecases.user.home.HomeActivity
 import pe.turismogo.usecases.login.LoginActivity
 import pe.turismogo.usecases.policies.PrivacyPoliciesActivity
 import pe.turismogo.usecases.policies.TermsAndConditionsActivity
@@ -10,6 +12,8 @@ import pe.turismogo.usecases.recover.RecoverUserActivity
 import pe.turismogo.usecases.register.RegisterBusinessActivity
 import pe.turismogo.usecases.register.RegisterSelectionActivity
 import pe.turismogo.usecases.register.RegisterUserActivity
+import pe.turismogo.usecases.user.dashboard.evaluate.UserEvaluateEventActivity
+import pe.turismogo.usecases.user.dashboard.events.UserEventDetailsActivity
 
 
 /***
@@ -79,6 +83,38 @@ class Navigation {
          */
         fun toUserHomeMenu(context : Context) {
             val intent = Intent(context, HomeActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        /**
+         * Navega al menú principal del administrador
+         */
+        fun toAdminHomeMenu(context : Context) {
+            val intent = Intent(context, HomeAdminActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        /**
+         * Navega al menú principal del administrador para agregar o editar Eventos
+         */
+        fun toEventAdd(context : Context) {
+            val intent = Intent(context, AdminEventsActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        /**
+         * Navega al menu de detalles de evento para reservar
+         */
+        fun toEventDetails(context : Context) {
+            val intent = Intent(context, UserEventDetailsActivity::class.java)
+            context.startActivity(intent)
+        }
+
+        /**
+         * Navega al menu de valoracion de actividad
+         */
+        fun toEventReview(context : Context) {
+            val intent = Intent(context, UserEvaluateEventActivity::class.java)
             context.startActivity(intent)
         }
     }

@@ -24,6 +24,29 @@
     <string name="prompt_profile">Perfil</string>
     <string name="prompt_history">Historia</string>
     <string name="prompt_options">Opciones</string>
+    <string name="prompt_settings">Config.</string>
+    <string name="prompt_management">Gestión</string>
+    <string name="prompt_panel">Panel</string>
+    <string name="prompt_control">Control</string>
+    <string name="prompt_event_list">Lista de Eventos</string>
+    <string name="prompt_search">Búsqueda</string>
+    <string name="prompt_event">Evento</string>
+    <string name="prompt_date">Fecha</string>
+    <string name="prompt_status">Estado</string>
+    <string name="prompt_moderation">Moderación de Vocabulario</string>
+    <string name="prompt_active_block">Bloqueo Activo</string>
+    <string name="prompt_disabled_block">Bloqueo Inactivo</string>
+    <string name="prompt_words_blocked">Palabras Bloqueadas</string>
+    <string name="prompt_notified_words">Palabras Notificadas</string>
+    <string name="prompt_added">Agregada</string>
+    <string name="prompt_word">Palabra</string>
+    <string name="prompt_add_images">Agrega una Imagen</string>
+    <string name="prompt_itinerary">Itinerario</string>
+    <string name="prompt_cost">Precio</string>
+    <string name="prompt_location">Ubicación</string>
+    <string name="prompt_reviews">Valoraciones y Reseñas</string>
+    <string name="prompt_next_reservation">Próxima Reserva…</string>
+
 
     <string name="action_sign_in">Inicio de sesión</string>
     <string name="action_continue">Continuar</string>
@@ -34,6 +57,8 @@
     <string name="action_terms_and_privacy">Términos y Políticas de Privacidad</string>
     <string name="action_accept">Aceptar</string>
     <string name="action_recover_account">Recuperar cuenta</string>
+    <string name="action_add">Agregar</string>
+    <string name="action_book_activity">Reservar Actividad</string>
 
     <string name="login">Inicio de sesión</string>
     <string name="register_new_account">¿Aún no tienes cuenta?</string>
@@ -54,6 +79,33 @@
     <string name="placeholder_title">Título</string>
     <string name="placeholder_subtitle">Subtítulo</string>
     <string name="placeholder_building">En Construcción</string>
+    <string name="placeholder_event">Turismo X</string>
+    <string name="placeholder_status">Activo</string>
+    <string name="placeholder_word_blocked">Pago</string>
+    <string name="placeholder_word_notified">Mango</string>
+    <string name="placeholder_event_description">Disfruta de una exitante caminata a través
+        de paisajes espectaculares y naturaleza virgen. Esta actividad es perfecta para amantes
+        de la aventura y vistas panoramicas impresionantes.
+    </string>
+    <string name="placeholder_event_name">Senderismo al lago cristal</string>
+    <string name="placeholder_event_itinerary_1">- Salida 9AM: Centro de Visitantes</string>
+    <string name="placeholder_event_itinerary_2">- Trekking</string>
+    <string name="placeholder_event_itinerary_3">- Senderos escénicos</string>
+    <string name="placeholder_event_itinerary_4">- Parada para fotos</string>
+    <string name="placeholder_event_itinerary_5">- Almuerzo: Pick-Nic en la cima de la montaña</string>
+    <string name="placeholder_event_itinerary_6">- Regreso 4PM: Centro de Visitantes</string>
+    <string name="placeholder_event_cost">$50.00 por Persona</string>
+    <string name="placeholder_event_location_1">Ubicación: Montañas de lago cristal</string>
+    <string name="placeholder_event_location_2">Punto de Encuentro: Centro de Visitantes</string>
+    <string name="placeholder_review_star_0">(4.5 Estrellas)</string>
+    <string name="placeholder_review_star_1">(5 Estrellas)</string>
+    <string name="placeholder_review_data_0">¡Una experiencia increible! Las vistas son
+    impresionantes y el guía fue muy informativo
+    </string>
+    <string name="placeholder_review_data_1">Lo pasamos genial en esta actividad. Definitivamente
+    se la recomendaría a otros viajeros.</string>
+    <string name="placeholder_review_user_0">María123</string>
+    <string name="placeholder_review_user_1">Juan Pérez</string>
 
     <string-array name="account_type">
         <item>Cuenta de Empresa</item>

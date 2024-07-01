@@ -9,13 +9,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import pe.turismogo.R
 import pe.turismogo.databinding.ActivityLoginBinding
+import pe.turismogo.util.Constants
 import pe.turismogo.util.Navigation
 
 class LoginActivity : AppCompatActivity() {
 
     var context : Context = this
     var activity : Activity = this
-    lateinit var binding : ActivityLoginBinding
+    private lateinit var binding : ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,18 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnLoginContinue.setOnClickListener {
-            Navigation.toUserHomeMenu(context)
+            val email = binding.etEmailLogin.editableText?.toString()
+            val password = binding.etPasswordLogin.editableText?.toString()
+
+            if(!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
+                if(validateTemporalAdmin(email, password))
+                    Navigation.toAdminHomeMenu(context)
+                else if (validateTemporalUser(email, password))
+                    Navigation.toUserHomeMenu(context)
+                else
+                    Constants.showSnackBar(binding.root, "El usuario no Existe")
+            } else
+                Constants.showSnackBar(binding.root, "Debe escribir el usuario y pass")
         }
 
         binding.tvForgotAccount.setOnClickListener {
@@ -42,5 +54,14 @@ class LoginActivity : AppCompatActivity() {
             Navigation.toRegisterSelection(context)
         }
 
+    }
+
+
+    fun validateTemporalUser(user : String, password : String) : Boolean {
+        return user == Constants.USER_TEMPORAL_USER && password == Constants.USER_TEMPORAL_PASSWORD
+    }
+
+    fun validateTemporalAdmin(user : String, password : String) : Boolean {
+        return user == Constants.ADMIN_TEMPORAL_USER && password == Constants.ADMIN_TEMPORAL_PASSWORD
     }
 }

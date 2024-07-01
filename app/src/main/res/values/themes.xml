@@ -43,6 +43,14 @@
     <style name="Text.Subtitle" parent="Widget.MaterialComponents.TextView">
     </style>
 
+    <style name="Text.Content.Medium" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Content.Small" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">10sp</item>
+    </style>
+
     <style name="Card.Main" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">5dp</item>
         <item name="cardCornerRadius">8dp</item>

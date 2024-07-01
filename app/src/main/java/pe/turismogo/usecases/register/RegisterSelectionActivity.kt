@@ -19,8 +19,8 @@ class RegisterSelectionActivity : AppCompatActivity() {
 
     var context : Context = this
     var activity : Activity = this
-    lateinit var binding : ActivityRegisterSelectionBinding
-    lateinit var roleList : List<String>
+    private lateinit var binding : ActivityRegisterSelectionBinding
+    private lateinit var roleList : List<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

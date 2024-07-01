@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        layout="@layout/content_panel"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabPanelOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Options"
+        app:icon="@drawable/icon_map_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabOption1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fabPanelOptions"
+        app:layout_constraintEnd_toEndOf="@+id/fabPanelOptions"
+        app:srcCompat="@drawable/icon_settings" />
+
+    <!--Action name text for the add alarm button-->
+    <!--Make sure that you are constraining this
+        Text to the add Alarm FAB button-->
+    <TextView
+        android:id="@+id/add_alarm_action_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Add Alarm"
+        app:layout_constraintBottom_toBottomOf="@id/fabOption1"
+        app:layout_constraintEnd_toStartOf="@id/fabOption1"
+        app:layout_constraintTop_toTopOf="@id/fabOption1" />
+
+    <!--Floating action button for add person-->
+    <!--Make sure that you are constraining this button
+        to the add Alarm FAB button-->
+    <!--Make sure to add backgroundTint attribute to match
+         the entire application color-->
+    <!--because after changing the base application theme
+         the color of the FAB is set Blue as default-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabOption2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@+id/fabOption1"
+        app:layout_constraintEnd_toEndOf="@+id/fabPanelOptions"
+        app:layout_constraintStart_toStartOf="@+id/fabOption1"
+        app:srcCompat="@drawable/icon_settings" />
+
+    <!--Action name text for the add person button-->
+    <!--Make sure that you are constraining this Text
+         to the add Person FAB button-->
+    <TextView
+        android:id="@+id/add_person_action_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Agregar Evento"
+        app:layout_constraintBottom_toBottomOf="@id/fabOption2"
+        app:layout_constraintEnd_toStartOf="@id/fabOption2"
+        app:layout_constraintTop_toTopOf="@+id/fabOption2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

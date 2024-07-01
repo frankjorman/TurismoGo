@@ -17,7 +17,7 @@ class RegisterUserActivity : AppCompatActivity() {
 
     var context : Context = this //referencia al contexto de la app para evitar el uso de "this"
     var activity : Activity = this //se genera una referencia a la actividad de la app evitando el uso de "this"
-    lateinit var binding : ActivityRegisterUserBinding //ViewBinding
+    private lateinit var binding : ActivityRegisterUserBinding //ViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

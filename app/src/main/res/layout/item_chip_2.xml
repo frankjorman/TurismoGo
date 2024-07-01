@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.chip.Chip
+    style="@style/Widget.MaterialComponents.Chip.Entry"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/placeholder_word_blocked"
+    android:checkable="true"
+    android:checked="false">
+
+</com.google.android.material.chip.Chip>

@@ -16,7 +16,7 @@ class RecoverUserActivity : AppCompatActivity() {
 
     var context : Context = this
     var activity : Activity = this
-    lateinit var binding : ActivityRecoverUserBinding
+    private lateinit var binding : ActivityRecoverUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

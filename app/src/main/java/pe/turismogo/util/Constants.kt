@@ -8,6 +8,11 @@ import com.google.android.material.snackbar.Snackbar
 class Constants {
 
     companion object {
+        const val ADMIN_TEMPORAL_USER = "admin"
+        const val ADMIN_TEMPORAL_PASSWORD = "1234"
+        const val USER_TEMPORAL_USER = "user"
+        const val USER_TEMPORAL_PASSWORD = "1234"
+
         const val ONE_SEC : Long = 1000L
 
 

@@ -28,7 +28,28 @@
     <string name="prompt_profile">Profile</string>
     <string name="prompt_history">History</string>
     <string name="prompt_options">Options</string>
-
+    <string name="prompt_settings">Settings</string>
+    <string name="prompt_management">Management</string>
+    <string name="prompt_panel">Panel</string>
+    <string name="prompt_control">Control</string>
+    <string name="prompt_event_list">Event List</string>
+    <string name="prompt_search">Search</string>
+    <string name="prompt_event">Event</string>
+    <string name="prompt_date">Date</string>
+    <string name="prompt_status">Status</string>
+    <string name="prompt_moderation">Moderate Words</string>
+    <string name="prompt_active_block">Block Active</string>
+    <string name="prompt_disabled_block">Block disabled</string>
+    <string name="prompt_words_blocked">Words Blocked</string>
+    <string name="prompt_notified_words">Notified Words</string>
+    <string name="prompt_added">Added</string>
+    <string name="prompt_word">Word</string>
+    <string name="prompt_add_images">Add an Image</string>
+    <string name="prompt_itinerary">Itinerary</string>
+    <string name="prompt_cost">Cost</string>
+    <string name="prompt_location">Location</string>
+    <string name="prompt_reviews">Reviews</string>
+    <string name="prompt_next_reservation">Next Reservation…</string>
 
     <string name="action_sign_in">Sign in</string>
     <string name="action_continue">Continue</string>
@@ -39,7 +60,8 @@
     <string name="action_terms_and_privacy">Terms &amp; Privacy policies</string>
     <string name="action_accept">Accept</string>
     <string name="action_recover_account">Recover Account</string>
-
+    <string name="action_add">Add</string>
+    <string name="action_book_activity">Book Activity</string>
 
     <string name="login">"Login"</string>
     <string name="register_new_account">You don\'t have an account yet?</string>
@@ -61,9 +83,34 @@
     <string name="placeholder_subtitle">Subtitle</string>
     <string name="placeholder_address" translatable="false">Jr. Juan de Arona 565 - San Isidro</string>
     <string name="placeholder_building">Under Construction</string>
-
-
-
+    <string name="placeholder_event">Tourism X</string>
+    <string name="placeholder_status">Active</string>
+    <string name="placeholder_date" translatable="false">20-12-2020</string>
+    <string name="placeholder_word_blocked">Payment</string>
+    <string name="placeholder_word_notified">Remnant</string>
+    <string name="placeholder_event_description">Behind an exiting hiking through outstanding
+        landscape and un spoiled nature, this activity is perfect for adventure lovers and offer
+        outstanding views
+    </string>
+    <string name="placeholder_event_name">Hiking to Crystal Lake</string>
+    <string name="placeholder_event_itinerary_1">- Departure 9AM: Visitant Center</string>
+    <string name="placeholder_event_itinerary_2">- Trekking</string>
+    <string name="placeholder_event_itinerary_3">- Walking Trails</string>
+    <string name="placeholder_event_itinerary_4">- Photo Stop</string>
+    <string name="placeholder_event_itinerary_5">- Lunch: Mountain Summit Pick-Nic</string>
+    <string name="placeholder_event_itinerary_6">- Return 4PM: Visitant Center</string>
+    <string name="placeholder_event_cost">50 USD each</string>
+    <string name="placeholder_event_location_1">Location: Crystal Lake Mountain</string>
+    <string name="placeholder_event_location_2">Meeting Point: Visitant Center</string>
+    <string name="placeholder_review_star_0">(4.5 Stars)</string>
+    <string name="placeholder_review_star_1">(5 Stars)</string>
+    <string name="placeholder_review_data_0">A Wonderful experience! Natural landscapes are beautiful
+        and the guide was pretty informative
+    </string>
+    <string name="placeholder_review_data_1">We hang out great in this activity. I definitively
+        would recommend this to other travelers.</string>
+    <string name="placeholder_review_user_0">Jane Doe</string>
+    <string name="placeholder_review_user_1">John Doe</string>
 
     <string-array name="account_type">
         <item>Business Account</item>

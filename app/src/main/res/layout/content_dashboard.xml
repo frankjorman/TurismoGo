@@ -64,40 +64,50 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/llReservation"
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Card.Main"
+                android:id="@+id/cardReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:weightSum="8"
                 android:layout_below="@id/llAddress"
-                android:orientation="horizontal">
+                android:layout_margin="10dp">
 
-                <com.google.android.material.textview.MaterialTextView
-                    style="@style/Text.Title.Bold.Big"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:id="@+id/llReservation"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:layout_margin="10dp"
-                    android:text="Next Reservation..."/>
+                    android:weightSum="8"
+                    android:layout_below="@id/llAddress"
+                    android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/ivReservationImage"
-                    android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_weight="5"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/travel_main_1"
-                    tools:ignore="ContentDescription,MissingConstraints" />
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/Text.Title.Bold.Big"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_margin="10dp"
+                        android:text="@string/prompt_next_reservation"/>
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/ivReservationImage"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:layout_weight="5"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/travel_main_1"
+                        tools:ignore="ContentDescription,MissingConstraints" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/Text.Title.Bold"
                 android:id="@+id/tvRecommendationsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/llReservation"
+                android:layout_below="@id/cardReservation"
                 android:layout_margin="10dp"
                 android:text="@string/placeholder_title"/>
 
@@ -115,6 +125,7 @@
 
                     <include
                         layout="@layout/layout_card_item_1"
+                        android:id="@+id/option1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
