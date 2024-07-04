@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "557605799597",
+    "project_id": "turismogo-9a24b",
+    "storage_bucket": "turismogo-9a24b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557605799597:android:7b9a57c5514b504998a824",
+        "android_client_info": {
+          "package_name": "pe.turismogo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqOooPGNepB_OH89HFui1JdH3Snr1cXOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

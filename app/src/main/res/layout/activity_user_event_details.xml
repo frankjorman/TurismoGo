@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".usecases.user.dashboard.events.UserEventDetailsActivity">
+    tools:context=".usecases.user.events.details.UserEventDetailsActivity">
 
     <include
         layout="@layout/layout_header_1"
@@ -15,165 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <ScrollView
+    <include
+        layout="@layout/content_event_details"
+        android:id="@+id/contentEventDetails"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:background="@drawable/travel_1"
-                android:scaleType="centerCrop"
-                />
-
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_name"/>
-
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_description"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/prompt_itinerary"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_itinerary_1"/>
-
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_itinerary_2"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_itinerary_3"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_itinerary_4"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_itinerary_5"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_itinerary_6"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/prompt_cost"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_cost"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/prompt_location"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_location_1"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Subtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_event_location_2"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/prompt_reviews"/>
-
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <include
-                        layout="@layout/item_card_example_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <include
-                        layout="@layout/item_card_example_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-            <com.google.android.material.button.MaterialButton
-                style="@style/Button.Filled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
-                android:text="@string/placeholder_button"
-                app:icon="@drawable/icon_person_outlined"
-                />
-
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

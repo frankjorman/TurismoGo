@@ -27,25 +27,25 @@
 
             <include
                 android:id="@+id/profile"
-                layout="@layout/layout_card_data_profile"
+                layout="@layout/card_data_profile"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
             <include
                 android:id="@+id/option1"
-                layout="@layout/layout_card_text_icon"
+                layout="@layout/card_text_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
             <include
                 android:id="@+id/option2"
-                layout="@layout/layout_card_text_icon"
+                layout="@layout/card_text_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
             <include
                 android:id="@+id/option3"
-                layout="@layout/layout_card_text_icon"
+                layout="@layout/card_text_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

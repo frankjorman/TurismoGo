@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".usecases.user.dashboard.UserDashboardFragment">
 
-
     <include
+        android:id="@+id/contentDashboard"
         layout="@layout/content_dashboard"
-        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

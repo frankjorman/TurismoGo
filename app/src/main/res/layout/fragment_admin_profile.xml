@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".usecases.admin.profile.AdminProfileFragment">
+    tools:context=".usecases.business.profile.AdminProfileFragment">
 
     <include
         layout="@layout/content_profile"
+        android:id="@+id/contentProfile"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

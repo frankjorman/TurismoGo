@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".usecases.admin.panel.AdminPanelFragment">
+    tools:context=".usecases.business.panel.AdminPanelFragment">
 
     <include
         layout="@layout/content_panel"
+        android:id="@+id/contentPanel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"/>

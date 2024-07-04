@@ -25,13 +25,9 @@ class RegisterSelectionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         binding = ActivityRegisterSelectionBinding.inflate(activity.layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
         supportActionBar?.hide() //se oculta la barra por defecto de la app
 
@@ -60,7 +56,5 @@ class RegisterSelectionActivity : AppCompatActivity() {
                 else -> Constants.showSnackBar(binding.root, context.getString(R.string.invalid_selection)) //si no selecciona nada se muestra un mensaje
             }
         }
-
-
     }
 }

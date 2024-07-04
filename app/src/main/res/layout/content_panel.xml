@@ -36,6 +36,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Input.Outlined.NoError"
+                    android:id="@+id/tilSearchPanel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="6.8"
@@ -44,16 +45,19 @@
                     app:endIconDrawable="@drawable/icon_search">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSearchPanel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.Material3.Button.IconButton"
+                    style="@style/Button.IconNatural"
                     android:id="@+id/options"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
                     android:layout_weight="1.2"
                     app:icon="@drawable/icon_more_vertical"
@@ -92,50 +96,38 @@
                             style="@style/Text.Subtitle.Bold"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="4"
+                            android:layout_weight="3"
                             android:text="@string/prompt_date"/>
 
                         <com.google.android.material.textview.MaterialTextView
                             style="@style/Text.Subtitle.Bold"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="4"
+                            android:layout_weight="2.5"
                             android:text="@string/prompt_status"/>
 
-                    </LinearLayout>
+                        <com.google.android.material.textview.MaterialTextView
+                            style="@style/Text.Subtitle.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2.5"
+                            android:text="@string/prompt_options"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <include
-                            layout="@layout/item_data_example_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-                        <include
-                            layout="@layout/item_data_example_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-                        <include
-                            layout="@layout/item_data_example_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-                        <include
-                            layout="@layout/item_data_example_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
-
-                        <include
-                            layout="@layout/item_data_example_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
 
                     </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvEvents"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:clickable="true"
+                            android:focusable="true" />
+
+<!--                    <android.support.v7.widget.RecyclerView-->
+<!--                        android:id="@+id/rvEvents"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"/>-->
 
                 </LinearLayout>
 

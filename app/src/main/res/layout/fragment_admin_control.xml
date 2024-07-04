@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".usecases.admin.control.AdminControlFragment">
+    tools:context=".usecases.business.control.AdminControlFragment">
 
     <include
         android:id="@+id/headerControl"

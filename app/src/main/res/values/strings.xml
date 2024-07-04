@@ -5,13 +5,61 @@
     <string name="title_activity_login2" translatable="false">LoginActivity2</string>
 
     <string name="success_account_creation">Account created successfully</string>
+    <string name="success_account_sign_out">You are now logged out.</string>
+    <string name="success_loading_content">Content was successfully updated</string>
+    <string name="success_event_creation">Event created successfully</string>
+    <string name="success_event_updated">Event updated successfully</string>
+    <string name="success_event_delete">Event deleted successfully</string>
+    <string name="success_event_join">You have reserved an spot successfully</string>
+    <string name="success_review_published">Your review has been published successfully</string>
+
+    <string name="error_name_required">Please write your name</string>
+    <string name="error_last_name_required">Please write your last name</string>
+    <string name="error_document_id_required">Please write your document Id</string>
+    <string name="error_email_required">Please write your email</string>
+    <string name="error_password_required">Please write your password</string>
+    <string name="error_password_too_short">Password is too short</string>
+    <string name="error_password_too_long">Password is too long</string>
+    <string name="error_password_weak">Password is too weak</string>
+    <string name="error_terms_conditions_missing">You must accept our terms and conditions</string>
+    <string name="error_account_creation_failed">Account creation failed, please try again</string>
+    <string name="error_fetching_user_data">Error fetching user data, please try again</string>
+    <string name="error_business_name_required">Please write your business name</string>
+    <string name="error_legal_id_required">Please write your legal id</string>
+    <string name="error_city_required">Please write your city</string>
+    <string name="error_fetching_data">Error fetching data</string>
+    <string name="error_cost_required">Cost is required</string>
+    <string name="error_date_required">Date is required</string>
+    <string name="error_location_required">Location information is required</string>
+    <string name="error_description_required">A description is required</string>
+    <string name="error_itinerary_required">An itinerary is required</string>
+    <string name="error_event_creation">Event creation failed, please try again</string>
+    <string name="error_event_only_one_image">You can use only one photo per event</string>
+    <string name="error_intent_get_content_failed">An error has occurred getting your image, please try again</string>
+    <string name="error_event_image_not_found">You must select an image first</string>
+    <string name="error_event_update">Event update failed, please try again</string>
+    <string name="error_event_delete">Event delete failed, please try again</string>
+    <string name="error_event_join">Event join failed, please try again"</string>
+    <string name="error_event_collision">Event date collision, please select another</string>
+    <string name="error_date_birth_required">Please select your date of birth</string>
+    <string name="error_phone_required">Please enter your phone number</string>
+    <string name="error_invalid_credentials">The supplied auth credential is incorrect, malformed or has expired.</string>
+    <string name="error_email_not_found">The supplied email does not exist</string>
+    <string name="error_user_not_found">The user does not exist</string>
+    <string name="error_review_comment_required">You must write a comment</string>
+    <string name="error_review_publish">Review publish failed, please try again</string>
+
+    <string name="error_general">An error has occurred, please try again</string>
+
 
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="invalid_selection">You must select an option first</string>
+    <string name="invalid_type">A new type is needed</string>
 
 
     <string name="login_failed">"Login failed"</string>
+    <string name="without_user_in_event">There is no user in this event</string>
 
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -50,6 +98,53 @@
     <string name="prompt_location">Location</string>
     <string name="prompt_reviews">Reviews</string>
     <string name="prompt_next_reservation">Next Reservation…</string>
+    <string name="prompt_logout">Here you can close your session</string>
+    <string name="prompt_welcome">Welcome!</string>
+    <string name="prompt_loading">Loading…</string>
+    <string name="prompt_please_wait">Please wait…</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_description">Description</string>
+    <string name="prompt_new_event">New Event</string>
+    <string name="prompt_event_main_information">Main information</string>
+    <string name="prompt_event_location_information">Location information</string>
+    <string name="prompt_event_meeting_point">Meeting point</string>
+    <string name="prompt_event_destination_point">Destination point</string>
+    <string name="prompt_event_details">Event details</string>
+    <string name="prompt_active">Active</string>
+    <string name="prompt_inactive">Inactive</string>
+    <string name="prompt_none">None</string>
+    <string name="prompt_home">Home</string>
+    <string name="prompt_date_start">Start</string>
+    <string name="prompt_date_end">End</string>
+    <string name="prompt_date_departure">Departure</string>
+    <string name="prompt_date_return">Return</string>
+    <string name="prompt_date_departure_return">Departure &amp; Return</string>
+    <string name="prompt_event_available">Events Available</string>
+    <string name="prompt_available_seats">Seats</string>
+    <string name="prompt_no_phone">No phone number</string>
+    <string name="prompt_date_of_birth">Date of Birth</string>
+    <string name="prompt_age">Age</string>
+    <string name="prompt_per_person">Per person</string>
+    <string name="prompt_your_reservations">Your Reservations</string>
+    <string name="prompt_reservations">Reservations</string>
+    <string name="prompt_reservations_list">Reservations List</string>
+    <string name="prompt_recommendations">Our recommendations</string>
+    <string name="prompt_welcome_user">Welcome</string>
+    <string name="prompt_your_opinion">Your Opinion</string>
+    <string name="prompt_qualify_experience">Qualify your experience</string>
+    <string name="prompt_comment">Comment</string>
+    <string name="prompt_stars">Stars</string>
+
+
+    <string name="desc_menu_new_event">Here you can create a new event</string>
+    <string name="desc_menu_panel">Here you can manage your events</string>
+    <string name="desc_menu_events">Here you can see all events</string>
+    <string name="desc_menu_event_details">Here all the information for the event</string>
+    <string name="desc_menu_dashboard">Check your reservations</string>
+    <string name="desc_menu_reservations_details">Here your reservation details</string>
+    <string name="desc_menu_review_publish">Your opinion is important for us</string>
+    <string name="action_publish_review">Publish review</string>
+
 
     <string name="action_sign_in">Sign in</string>
     <string name="action_continue">Continue</string>
@@ -62,6 +157,13 @@
     <string name="action_recover_account">Recover Account</string>
     <string name="action_add">Add</string>
     <string name="action_book_activity">Book Activity</string>
+    <string name="action_sign_out">Sign Out</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_ok" translatable="false">OK</string>
+    <string name="action_save">Save</string>
+    <string name="action_join">Join</string>
+    <string name="action_reserve">Reserve</string>
+    <string name="action_leave_review">Leave review</string>
 
     <string name="login">"Login"</string>
     <string name="register_new_account">You don\'t have an account yet?</string>
@@ -76,6 +178,11 @@
     <string name="business_account">Business Account</string>
     <string name="user_account">User Account</string>
     <string name="selection_role">Selection Role</string>
+    <string name="delete_action_begin">Do you really want to delete</string>
+    <string name="delete_action_end">this action is irreversible?</string>
+    <string name="join_action_begin">Do you want to make a reservation for</string>
+    <string name="join_action_end">event?</string>
+
 
     <string name="placeholder_required_hint">* Required</string>
     <string name="placeholder_button">Button</string>

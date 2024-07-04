@@ -1,25 +1,26 @@
 package pe.turismogo.usecases.user.home
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import pe.turismogo.R
 import pe.turismogo.databinding.ActivityHomeBinding
+import pe.turismogo.usecases.base.ActivityBase
+import pe.turismogo.usecases.user.dashboard.ReservationUserViewModel
 import pe.turismogo.usecases.user.dashboard.UserDashboardFragment
-import pe.turismogo.usecases.user.history.UserHistoryFragment
+import pe.turismogo.usecases.user.events.EventViewModel
+import pe.turismogo.usecases.user.events.UserEventsFragment
 import pe.turismogo.usecases.user.profile.UserProfileFragment
-import pe.turismogo.usecases.user.settings.UserSettingsFragment
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : ActivityBase()  {
 
-    var context : Context = this //referencia al contexto de la app para evitar el uso de "this"
-    var activity : Activity = this //se genera una referencia a la actividad de la app evitando el uso de "this"
     private lateinit var binding : ActivityHomeBinding //declaracion de view binding
+
+    val eventViewModel : EventViewModel by viewModels()
+    val reservationViewModel : ReservationUserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,28 +35,38 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
+        eventViewModel.init()
+        reservationViewModel.init()
+
+        setDependencies()
+    }
+
+    override fun setDependencies() {
         supportActionBar?.hide() //se oculta la barra por defecto de la app
 
-        replaceFragment(UserDashboardFragment()) //se muestra la vista inicial
+        replaceFragment(UserEventsFragment()) //se muestra la vista inicial
 
+        setClickEvents()
+    }
+
+    override fun setClickEvents() {
         //segun la seleccion de la barra de navegacion inferior se cambiaran los fragmentos respectivos
         binding.navHomeUser.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 //vista principal donde reside el dashboard
-                R.id.menu_user_home -> replaceFragment(UserDashboardFragment())
+                R.id.menu_user_home -> replaceFragment(UserEventsFragment())
                 //vista de historico aun no definida
-                R.id.menu_user_history -> replaceFragment(UserHistoryFragment())
+                R.id.menu_user_dashboard -> replaceFragment(UserDashboardFragment())
                 //visa de opciones, se piensa unir con el perfil de usuario
-                R.id.menu_user_settings -> replaceFragment(UserSettingsFragment())
-                //vista de perfil de usuario
                 R.id.menu_user_profile -> replaceFragment(UserProfileFragment())
-                else -> replaceFragment(UserDashboardFragment())
+                else -> replaceFragment(UserEventsFragment())
             }
         }
-
-
-
     }
+
+    override fun setInputEvents() { TODO("Not yet implemented")  }
+
+    override fun validateInputs(): Boolean { TODO("Not yet implemented") }
 
     /**
      * Funcion que permite reemplazar un fragmento dentro del frame de la actividad

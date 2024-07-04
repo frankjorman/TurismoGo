@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".usecases.user.dashboard.evaluate.UserEvaluateEventActivity">
+    tools:context=".usecases.user.dashboard.reviews.UserEvaluateEventActivity">
 
     <include
         android:id="@+id/header"
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="Califique su experiencia"/>
+                android:text="@string/prompt_qualify_experience"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,49 +38,65 @@
                 android:weightSum="10"
                 android:orientation="horizontal">
 
-                <ImageView
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.IconNatural"
+                    android:id="@+id/btnStar1"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_weight="2"
-                    android:src="@drawable/icon_star_0"/>
+                    app:icon="@drawable/icon_star_0"
+                    app:iconSize="68dp"/>
 
-                <ImageView
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.IconNatural"
+                    android:id="@+id/btnStar2"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_weight="2"
-                    android:src="@drawable/icon_star_0"/>
+                    app:icon="@drawable/icon_star_0"
+                    app:iconSize="68dp"/>
 
-                <ImageView
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.IconNatural"
+                    android:id="@+id/btnStar3"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_weight="2"
-                    android:src="@drawable/icon_star_0"/>
+                    app:icon="@drawable/icon_star_0"
+                    app:iconSize="68dp"/>
 
-                <ImageView
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.IconNatural"
+                    android:id="@+id/btnStar4"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_weight="2"
-                    android:src="@drawable/icon_star_0"/>
+                    app:icon="@drawable/icon_star_0"
+                    app:iconSize="68dp"/>
 
-                <ImageView
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Button.IconNatural"
+                    android:id="@+id/btnStar5"
                     android:layout_width="0dp"
                     android:layout_height="64dp"
                     android:layout_weight="2"
-                    android:src="@drawable/icon_star_0"/>
-
+                    app:icon="@drawable/icon_star_0"
+                    app:iconSize="68dp"/>
 
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Input.Outlined.Required"
+                android:id="@+id/tilReviewComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/placeholder_title"
+                android:hint="@string/prompt_comment"
                 app:counterEnabled="true"
                 app:counterMaxLength="2000"
                 app:hintEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etReviewComment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lines="10"/>
@@ -89,11 +105,12 @@
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Button.Filled"
+                android:id="@+id/btnPublishReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:text="@string/placeholder_button"
-                app:icon="@drawable/icon_person_outlined"
+                android:text="@string/action_publish_review"
+                app:icon="@drawable/icon_edit"
                 />
 
         </LinearLayout>

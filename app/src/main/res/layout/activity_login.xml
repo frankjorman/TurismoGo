@@ -8,8 +8,8 @@
     android:layout_height="match_parent"
     tools:context=".usecases.login.LoginActivity">
 
-
     <RelativeLayout
+        android:id="@+id/rlParent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -20,8 +20,7 @@
             android:scaleType="centerCrop"
             android:layout_alignParentTop="true"
             android:layout_marginTop="10dp"
-            android:src="@drawable/turismo_go_transparent"
-            tools:ignore="ContentDescription,MissingConstraints" />
+            android:src="@drawable/logo_app" />
 
         <com.google.android.material.textview.MaterialTextView
             style="@style/Text.Title"

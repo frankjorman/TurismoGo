@@ -3,12 +3,59 @@
     <string name="app_name">TurismoGO</string>
 
     <string name="success_account_creation">Cuenta creada satisfactoriamente</string>
+    <string name="success_account_sign_out">You are now logged out.</string>
+    <string name="success_loading_content">El contenido fue cargado exitosamente</string>
+    <string name="success_event_creation">Evento creado satisfactoriamente</string>
+    <string name="success_event_updated">Evento actualizado satisfactoriamente</string>
+    <string name="success_event_delete">Evento eliminado satisfactoriamente</string>
+    <string name="success_event_join">Haz reservado un puesto en el evento satisfactoriamente</string>
+    <string name="success_review_published">Su reseña ha sido publicada satisfactoriamente</string>
+
+    <string name="error_name_required">Por favor, ingrese su nombre</string>
+    <string name="error_last_name_required">Por favor, ingrese su apellido</string>
+    <string name="error_document_id_required">Por favor, ingrese su identificación</string>
+    <string name="error_email_required">Por favor, ingrese su correo electrónico</string>
+    <string name="error_password_required">Por favor, ingrese su contraseña</string>
+    <string name="error_password_too_short">La contraseña es muy corta</string>
+    <string name="error_password_too_long">La contraseña es muy larga</string>
+    <string name="error_password_weak">Su contraseña es débil</string>
+    <string name="error_terms_conditions_missing">Debes aceptar los terminos y condiciones</string>
+    <string name="error_account_creation_failed">Creación de cuenta falló, por favor intente nuevamente</string>
+    <string name="error_fetching_user_data">Error obteniendo los datos del usuario, por favor intente nuevamente</string>
+    <string name="error_business_name_required">Por favor, escriba el nombre de la empresa</string>
+    <string name="error_legal_id_required">Por favor, escriba el RUC</string>
+    <string name="error_city_required">Por favor, escriba la ciudad</string>
+    <string name="error_fetching_data">Error trayendo el contenido</string>
+    <string name="error_cost_required">El precio es requerido</string>
+    <string name="error_date_required">La fecha es requerida</string>
+    <string name="error_location_required">Ubicación requerida</string>
+    <string name="error_description_required">Descripción requerida</string>
+    <string name="error_itinerary_required">Itinerario requerido</string>
+    <string name="error_event_creation">No se pudo crear el Evento, por favor intente nuevamente</string>
+    <string name="error_event_only_one_image">Solo se puede agregar una imagen por evento</string>
+    <string name="error_intent_get_content_failed">Un error ha ocurrido al obtener el contenido, por favor intente nuevamente</string>
+    <string name="error_event_image_not_found">Debes seleccionar una imagen</string>
+    <string name="error_event_update">Actualización de evento fallo, por favor intente nuevamente</string>
+    <string name="error_event_delete">Eliminación de evento fallo, por favor intente nuevamente</string>
+    <string name="error_event_join">No se pudo completar la reserva, por favor intente nuevamente</string>
+    <string name="error_event_collision">Colisión de evento por fecha, por favor seleccione otra fecha</string>
+    <string name="error_date_birth_required">Por favor, seleccione su fecha de nacimiento</string>
+    <string name="error_phone_required">Por favor, ingrese su número de teléfono</string>
+    <string name="error_invalid_credentials">La clave suministrada es incorrecta, malformada o caducada.</string>
+    <string name="error_email_not_found">El email suministrado no existe</string>
+    <string name="error_user_not_found">El usuario no existe</string>
+    <string name="error_review_comment_required">Debes escribir un comentario</string>
+    <string name="error_review_publish">Publicación de reseña fallida, por favor intente nuevamente</string>
+
+    <string name="error_general">Un error ha ocurrido por favor intente de nuevo</string>
 
     <string name="invalid_username">No es un nombre válido de usuario</string>
     <string name="invalid_password">La contraseña debe tener mas de 5 caracteres</string>
-    <string name="login_failed">Inicio de sesión fallido</string>
     <string name="invalid_selection">Primero debes seleccionar una opción</string>
+    <string name="invalid_type">Necesitas añadir el nuevo tipo</string>
 
+    <string name="login_failed">Inicio de sesión fallido</string>
+    <string name="without_user_in_event">No hay usuarios en el evento</string>
 
     <string name="prompt_email">Correo</string>
     <string name="prompt_password">Contraseña</string>
@@ -46,7 +93,50 @@
     <string name="prompt_location">Ubicación</string>
     <string name="prompt_reviews">Valoraciones y Reseñas</string>
     <string name="prompt_next_reservation">Próxima Reserva…</string>
+    <string name="prompt_logout">Acá puedes cerrar tu sesión</string>
+    <string name="prompt_welcome">¡Bienvenido!</string>
+    <string name="prompt_loading">Cargando…</string>
+    <string name="prompt_please_wait">Por favor, Espere…</string>
+    <string name="prompt_name">Name</string>
+    <string name="prompt_description">Descripción</string>
+    <string name="prompt_new_event">Nuevo Evento</string>
+    <string name="prompt_event_main_information">Información Principal</string>
+    <string name="prompt_event_location_information">Información de ubicación</string>
+    <string name="prompt_event_meeting_point">Punto de encuentro</string>
+    <string name="prompt_event_destination_point">Punto de destino</string>
+    <string name="prompt_event_details">Detalles del Evento</string>
+    <string name="prompt_active">Activo</string>
+    <string name="prompt_inactive">Inactivo</string>
+    <string name="prompt_none">Ninguno</string>
+    <string name="prompt_home">Principal</string>
+    <string name="prompt_date_start">Inicio</string>
+    <string name="prompt_date_end">Fin</string>
+    <string name="prompt_date_departure">Salida</string>
+    <string name="prompt_date_return">Regreso</string>
+    <string name="prompt_date_departure_return">Salida &amp; Regreso</string>
+    <string name="prompt_event_available">Eventos Disponibles</string>
+    <string name="prompt_available_seats">Plazas</string>
+    <string name="prompt_no_phone">Sín número de teléfono</string>
+    <string name="prompt_date_of_birth">Fecha de nacimiento</string>
+    <string name="prompt_age">Edad</string>
+    <string name="prompt_per_person">Por persona</string>
+    <string name="prompt_your_reservations">Tus reservas</string>
+    <string name="prompt_reservations">Reservaciones</string>
+    <string name="prompt_reservations_list">Lista de Reservaciones</string>
+    <string name="prompt_recommendations">Nuestras recomendaciones</string>
+    <string name="prompt_welcome_user">¡Bienvenido</string>
+    <string name="prompt_your_opinion">Tu Opinión</string>
+    <string name="prompt_qualify_experience">Califique su experiencia</string>
+    <string name="prompt_comment">Comentario</string>
+    <string name="prompt_stars">Estrellas</string>
 
+    <string name="desc_menu_new_event">Acá puedes crear un evento nuevo</string>
+    <string name="desc_menu_panel"> Acá puedes administrar tus eventos</string>
+    <string name="desc_menu_events">Acá puedes enterarte de todos los eventos que tenemos</string>
+    <string name="desc_menu_event_details">Acá tienes toda la información del evento</string>
+    <string name="desc_menu_dashboard">Acá puedes ver tus proximas reservas</string>
+    <string name="desc_menu_reservations_details">Acá están los datos de tu reserva</string>
+    <string name="desc_menu_review_publish">Tu opinión es importante para nosotros</string>
 
     <string name="action_sign_in">Inicio de sesión</string>
     <string name="action_continue">Continuar</string>
@@ -59,6 +149,14 @@
     <string name="action_recover_account">Recuperar cuenta</string>
     <string name="action_add">Agregar</string>
     <string name="action_book_activity">Reservar Actividad</string>
+    <string name="action_sign_out">Cerrar sesión</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_join">Unirse</string>
+    <string name="action_reserve">Reservar</string>
+    <string name="action_leave_review">Dejar Reseña</string>
+    <string name="action_publish_review">Publicar reseña</string>
+
 
     <string name="login">Inicio de sesión</string>
     <string name="register_new_account">¿Aún no tienes cuenta?</string>
@@ -73,6 +171,10 @@
     <string name="business_account">Cuenta de Empresa</string>
     <string name="user_account">Cuenta de Usuario</string>
     <string name="selection_role">Selección de Rol</string>
+    <string name="delete_action_begin">¿Realmente deseas eliminar</string>
+    <string name="delete_action_end">esta acción es irreversible?</string>
+    <string name="join_action_begin">¿Quieres reservar un puesto para</string>
+    <string name="join_action_end">ahora?</string>
 
     <string name="placeholder_required_hint">*Requerido</string>
     <string name="placeholder_button">Botón</string>

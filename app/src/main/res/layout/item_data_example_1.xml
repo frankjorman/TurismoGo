@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:weightSum="12">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp"
-        android:weightSum="12">
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvItemData1Example1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:text="@string/placeholder_event"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="@string/placeholder_event"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvItemData2Example1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:text="@string/placeholder_date"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="@string/placeholder_date"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvItemData3Example1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        tools:text="@string/prompt_inactive"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="@string/placeholder_status"/>
+    <com.google.android.material.button.MaterialButton
+        style="@style/Button.IconNatural"
+        android:id="@+id/btnEdit"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_weight="1.5"
+        app:icon="@drawable/icon_edit"
+        app:iconGravity="textStart"/>
 
-    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        style="@style/Button.IconNatural"
+        android:id="@+id/btnDelete"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_weight="1.5"
+        app:icon="@drawable/icon_delete"
+        app:iconGravity="textStart"/>
 
-</FrameLayout>
+</LinearLayout>

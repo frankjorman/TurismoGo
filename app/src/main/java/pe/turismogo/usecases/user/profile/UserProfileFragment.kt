@@ -1,38 +1,22 @@
 package pe.turismogo.usecases.user.profile
 
-import android.app.Activity
-import android.content.Context
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import pe.turismogo.R
-import pe.turismogo.databinding.FragmentUserProfileBinding
+import pe.turismogo.model.domain.User
+import pe.turismogo.usecases.base.FragmentProfile
 
 
-class UserProfileFragment : Fragment() {
+class UserProfileFragment : FragmentProfile() {
 
-    private lateinit var context : Context
-    private lateinit var activity : Activity
-    private lateinit var binding : FragmentUserProfileBinding
+    override fun updateUserData(user : User) {
+        val nameInfo = "${user.name} ${user.lastname}"
+        val documentInfo = "${fragContext.getString(R.string.prompt_document_id)}: ${user.documentId}"
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        context = requireContext()
-        activity = requireActivity()
-    }
+        binding.content.profile.optionTitle.text = nameInfo
+        binding.content.profile.optionDescription.text = documentInfo
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentUserProfileBinding.inflate(inflater, container, false)
-        setDependencies()
-        return binding.root
-    }
-
-    private fun setDependencies() {
-
+        binding.content.profile.optionDescription2.text = user.email
+        binding.content.profile.optionDescription3.text = user.phone.ifEmpty {
+            fragContext.getString(R.string.prompt_no_phone)
+        }
     }
 }

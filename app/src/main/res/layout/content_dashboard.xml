@@ -18,33 +18,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dashboardHeader">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Input.Outlined.NoError"
-                android:id="@+id/tilDashboardSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:hint="@string/placeholder_title"
-                app:endIconMode="custom"
-                app:endIconDrawable="@drawable/icon_search">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/llAddress"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tilDashboardSearch"
                 android:layout_margin="10dp"
                 android:orientation="horizontal">
 
@@ -64,127 +47,52 @@
 
             </LinearLayout>
 
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Card.Main"
+            <include
+                layout="@layout/card_next_reservation"
                 android:id="@+id/cardReservation"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/llAddress"
-                android:layout_margin="10dp">
-
-                <LinearLayout
-                    android:id="@+id/llReservation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="8"
-                    android:layout_below="@id/llAddress"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.textview.MaterialTextView
-                        style="@style/Text.Title.Bold.Big"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:layout_margin="10dp"
-                        android:text="@string/prompt_next_reservation"/>
-
-                    <ImageView
-                        android:id="@+id/ivReservationImage"
-                        android:layout_width="0dp"
-                        android:layout_height="200dp"
-                        android:layout_weight="5"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/travel_main_1"
-                        tools:ignore="ContentDescription,MissingConstraints" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:id="@+id/tvRecommendationsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cardReservation"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_title"/>
-
-
-            <HorizontalScrollView
-                android:id="@+id/hsvRecommendations"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvRecommendationsTitle">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <include
-                        layout="@layout/layout_card_item_1"
-                        android:id="@+id/option1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <include
-                        layout="@layout/layout_card_item_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <include
-                        layout="@layout/layout_card_item_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <include
-                        layout="@layout/layout_card_item_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-
-                </LinearLayout>
-
-            </HorizontalScrollView>
-
-            <com.google.android.material.textview.MaterialTextView
-                style="@style/Text.Title.Bold"
-                android:id="@+id/tvOffersTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/hsvRecommendations"
-                android:layout_margin="10dp"
-                android:text="@string/placeholder_title"/>
+                android:layout_height="wrap_content"/>
 
             <LinearLayout
+                android:id="@+id/llRecommendations"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/tvOffersTitle">
+                android:orientation="vertical">
 
-                <include
-                    layout="@layout/layout_card_big_0"
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/Text.Title.Bold"
+                    android:id="@+id/tvRecommendationsTitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:text="@string/prompt_recommendations"/>
 
-                <include
-                    layout="@layout/layout_card_big_0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <include
-                    layout="@layout/layout_card_big_0"
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRecommendations"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="10dp"
                     android:layout_height="wrap_content"/>
 
             </LinearLayout>
 
-        </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/Text.Title.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/prompt_your_reservations"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReservations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"/>
+
+        </LinearLayout>
 
     </ScrollView>
-
-
 
 </RelativeLayout>
