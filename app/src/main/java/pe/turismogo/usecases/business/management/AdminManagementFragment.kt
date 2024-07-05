@@ -69,7 +69,7 @@ class AdminManagementFragment : FragmentBase() {
 
     override fun setClickEvents() {
 
-        binding.actSelectEvent.setOnItemClickListener { parent, view, position, id ->
+        binding.actSelectEvent.setOnItemClickListener { _, _, position, _ ->
             managementViewModel.loadUserFromEvent(position)
         }
 

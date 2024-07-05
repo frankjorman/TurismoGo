@@ -10,6 +10,8 @@
     <string name="success_event_delete">Evento eliminado satisfactoriamente</string>
     <string name="success_event_join">Haz reservado un puesto en el evento satisfactoriamente</string>
     <string name="success_review_published">Su reseña ha sido publicada satisfactoriamente</string>
+    <string name="success_update_user">Tu perfil fue actualizado satisfactoriamente</string>
+    <string name="success_email_recover_sent">Correo electrónico de recuperación enviado satisfactoriamente</string>
 
     <string name="error_name_required">Por favor, ingrese su nombre</string>
     <string name="error_last_name_required">Por favor, ingrese su apellido</string>
@@ -46,6 +48,11 @@
     <string name="error_user_not_found">El usuario no existe</string>
     <string name="error_review_comment_required">Debes escribir un comentario</string>
     <string name="error_review_publish">Publicación de reseña fallida, por favor intente nuevamente</string>
+    <string name="error_email_invalid">Tu email se encuentra mal escrito o ya está en uso</string>
+    <string name="error_weak_password">La clave es muy débil</string>
+    <string name="error_update_user">Un error ha ocurrido al actualizar tu perfil, por favor intente nuevamente</string>
+    <string name="error_email_recover">Correo electrónico de recuperación no pudo ser enviado, por favor intente nuevamente</string>
+
 
     <string name="error_general">Un error ha ocurrido por favor intente de nuevo</string>
 
@@ -129,6 +136,12 @@
     <string name="prompt_qualify_experience">Califique su experiencia</string>
     <string name="prompt_comment">Comentario</string>
     <string name="prompt_stars">Estrellas</string>
+    <string name="prompt_edit_user">Edita tus datos</string>
+    <string name="prompt_your_reservation_history">Tu Historial de Reservas</string>
+    <string name="prompt_events_available">Eventos disponibles</string>
+    <string name="prompt_events_history">Tu historial</string>
+    <string name="prompt_nothing_to_show_yet">Nothing to show yet</string>
+
 
     <string name="desc_menu_new_event">Acá puedes crear un evento nuevo</string>
     <string name="desc_menu_panel"> Acá puedes administrar tus eventos</string>
@@ -137,6 +150,8 @@
     <string name="desc_menu_dashboard">Acá puedes ver tus proximas reservas</string>
     <string name="desc_menu_reservations_details">Acá están los datos de tu reserva</string>
     <string name="desc_menu_review_publish">Tu opinión es importante para nosotros</string>
+    <string name="desc_menu_history_events">Acá un resumen de los eventos que has reservado</string>
+
 
     <string name="action_sign_in">Inicio de sesión</string>
     <string name="action_continue">Continuar</string>
@@ -156,6 +171,7 @@
     <string name="action_reserve">Reservar</string>
     <string name="action_leave_review">Dejar Reseña</string>
     <string name="action_publish_review">Publicar reseña</string>
+    <string name="action_search_date">por fecha</string>
 
 
     <string name="login">Inicio de sesión</string>

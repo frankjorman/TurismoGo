@@ -5,11 +5,12 @@ import pe.turismogo.data.DatabaseManager
 import pe.turismogo.data.DatabaseReferences
 import pe.turismogo.factory.MessageFactory
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.usecases.business.panel.base.EventsActivity
 import pe.turismogo.util.Constants
+import pe.turismogo.util.Utils
 
-class AdminEventsActivity : EventsActivity() , DatabaseManagerObserver.EventInsertObserver {
+class AdminEventsActivity : EventsActivity() , DatabaseObserver.EventInsertObserver {
 
     override fun saveEvent() {
         val event = Event()
@@ -40,10 +41,10 @@ class AdminEventsActivity : EventsActivity() , DatabaseManagerObserver.EventInse
     override fun notifyEventInsertObservers(isSuccessful: Boolean) {
         dialog.dismiss()
         if(isSuccessful) {
-            Constants.showToast(context, context.getString(R.string.success_event_creation))
+            Utils.showToast(context, context.getString(R.string.success_event_creation))
             finish()
         } else {
-            Constants.showToast(context, context.getString(R.string.error_event_creation))
+            Utils.showToast(context, context.getString(R.string.error_event_creation))
         }
     }
 }

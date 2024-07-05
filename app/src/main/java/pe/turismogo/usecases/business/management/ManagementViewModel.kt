@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.model.domain.Event
 import pe.turismogo.model.domain.User
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.util.Constants
 
-class ManagementViewModel : ViewModel() , DatabaseManagerObserver.EventUpdateObserver {
+class ManagementViewModel : ViewModel() , DatabaseObserver.EventUpdateObserver {
 
     private val userList : MutableLiveData<List<User>> = MutableLiveData()
     private val eventList : MutableLiveData<List<Event>> = MutableLiveData()

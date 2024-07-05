@@ -20,6 +20,14 @@
         android:theme="@style/Theme.TurismoGo"
         tools:targetApi="31">
         <activity
+            android:name=".usecases.business.profile.BusinessEditActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
+            android:name=".usecases.user.profile.EditUserActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:exported="false" />
+        <activity
             android:name=".usecases.user.dashboard.reservations.UserReservationsDetailsActivity"
             android:exported="false" />
         <activity
@@ -40,28 +48,21 @@
             android:name=".usecases.business.home.HomeAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".usecases.policies.PrivacyPoliciesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".usecases.policies.TermsAndConditionsActivity"
-            android:exported="false" />
-        <activity
             android:name=".usecases.register.RegisterSelectionActivity"
             android:exported="false" />
         <activity
             android:name=".usecases.register.RegisterBusinessActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".usecases.register.RegisterUserActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name=".usecases.recover.RecoverUserActivity"
             android:exported="false" />
         <activity
             android:name=".usecases.user.home.HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".usecases.launch.LaunchActivity"
             android:exported="false" />
         <activity
             android:name=".usecases.login.LoginActivity"

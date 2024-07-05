@@ -1,0 +1,7 @@
+Intefaces:
+
+Paquete que almacena los listener que se utilizan a lo largo de la app
+
+- IOnEventClickListener: Evento de Click para una sola opcion
+
+- IOnEventPanelClickListener: Evento de Click para dos opciones

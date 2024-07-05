@@ -8,9 +8,14 @@
         android:title="@string/prompt_none"/>
 
     <item
-        android:id="@+id/event_filter_dates"
+        android:id="@+id/event_filter_departure"
         android:enabled="true"
-        android:title="@string/prompt_date_departure_return"/>
+        android:title="@string/prompt_date_departure"/>
+
+    <item
+        android:id="@+id/event_filter_return"
+        android:enabled="true"
+        android:title="@string/prompt_date_return"/>
 
     <item
         android:id="@+id/event_filter_description"

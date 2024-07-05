@@ -1,0 +1,15 @@
+Util:
+
+Es un paquete que almacena los objetos que son comunes para otras clases en el proyecto, permite
+centralizar las variables permitiendo editarlas en un solo sitio sin necesidad de utilizar variables
+hardcoded
+
+- Constants : Variables Constantes
+
+- Utils: Funciones y utilidades comunes
+
+- Navigation: Centraliza la navegacion entre los diferentes ciclos de vida de la app
+
+- Enums: Enumerables
+
+- Permissions: Funciones relacionadas con permisos en Android

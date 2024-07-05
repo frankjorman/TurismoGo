@@ -14,11 +14,6 @@
         android:title="@string/prompt_management"
         android:icon="@drawable/icon_people_management"/>
 
-    <item
-        android:id="@+id/menu_admin_control"
-        android:enabled="true"
-        android:title="@string/prompt_control"
-        android:icon="@drawable/icon_control"/>
 
     <item
         android:id="@+id/menu_admin_profile"

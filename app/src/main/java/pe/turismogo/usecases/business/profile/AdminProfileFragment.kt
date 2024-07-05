@@ -3,8 +3,13 @@ package pe.turismogo.usecases.business.profile
 import pe.turismogo.R
 import pe.turismogo.model.domain.User
 import pe.turismogo.usecases.base.FragmentProfile
+import pe.turismogo.util.Navigation
 
 class AdminProfileFragment : FragmentProfile() {
+
+    override fun toEditProfile() {
+        Navigation.toEditBusiness(fragContext)
+    }
 
     override fun updateUserData(user : User) {
         val legalInfo = "${fragContext.getString(R.string.prompt_legal_id)}: ${user.legalId}"

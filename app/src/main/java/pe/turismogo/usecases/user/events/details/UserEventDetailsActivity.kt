@@ -5,17 +5,23 @@ import androidx.appcompat.app.AlertDialog
 import pe.turismogo.R
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.factory.MessageFactory
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.usecases.user.base.EventDetailsActivity
-import pe.turismogo.util.Constants
+import pe.turismogo.util.Utils
 
 class UserEventDetailsActivity : EventDetailsActivity(),
-    DatabaseManagerObserver.EventInsertObserver {
+    DatabaseObserver.EventInsertObserver {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DatabaseManager.getInstance().addEventInsertObservable(this)
         setDependencies()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        DatabaseManager.getInstance().removeEventInsertObservable(this)
     }
 
     override fun setDependencies() {
@@ -39,7 +45,7 @@ class UserEventDetailsActivity : EventDetailsActivity(),
                 DatabaseManager.getInstance().joinEvent(event)
 
             } else {
-                Constants.showToast(context, context.getString(R.string.error_event_collision))
+                Utils.showToast(context, context.getString(R.string.error_event_collision))
             }
         }
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setOnClickListener {
@@ -48,12 +54,12 @@ class UserEventDetailsActivity : EventDetailsActivity(),
     }
 
     override fun notifyEventInsertObservers(isSuccessful: Boolean) {
-        dialog.dismiss()
+        try { dialog.dismiss() } catch (ignored : Exception) { /*NTD*/ }
         if(isSuccessful) {
-            Constants.showToast(context, context.getString(R.string.success_event_join))
+            Utils.showToast(context, context.getString(R.string.success_event_join))
             finish()
         } else {
-            Constants.showToast(context, context.getString(R.string.error_event_join))
+            Utils.showToast(context, context.getString(R.string.error_event_join))
         }
     }
 }

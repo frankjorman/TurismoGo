@@ -15,11 +15,12 @@ import pe.turismogo.assets.InputTextWatcher
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.databinding.ActivityAdminEventsBinding
 import pe.turismogo.factory.DatePickerFactory
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.usecases.base.ActivityPermissions
 import pe.turismogo.util.Constants
+import pe.turismogo.util.Utils
 
-abstract class EventsActivity  : ActivityPermissions() , DatabaseManagerObserver.EventInsertObserver {
+abstract class EventsActivity  : ActivityPermissions() , DatabaseObserver.EventInsertObserver {
 
     protected lateinit var binding : ActivityAdminEventsBinding
 
@@ -108,7 +109,7 @@ abstract class EventsActivity  : ActivityPermissions() , DatabaseManagerObserver
                 if (imageUri != null) {
                     saveEvent()
                 } else
-                    Constants.showSnackBar(binding.root, context.getString(R.string.error_event_image_not_found))
+                    Utils.showSnackBar(binding.root, context.getString(R.string.error_event_image_not_found))
             }
         }
     }
@@ -178,7 +179,7 @@ abstract class EventsActivity  : ActivityPermissions() , DatabaseManagerObserver
     }
 
     private val onDepartureSetListener =
-        DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             val formattedDayOfMonth = String.format("%02d", dayOfMonth)
             val formattedMonth = String.format("%02d", month)
             val date = "$formattedDayOfMonth-$formattedMonth-$year"
@@ -186,7 +187,7 @@ abstract class EventsActivity  : ActivityPermissions() , DatabaseManagerObserver
         }
 
     private val onReturnSetListener =
-        DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+        DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             val formattedDayOfMonth = String.format("%02d", dayOfMonth)
             val formattedMonth = String.format("%02d", month)
             val date = "$formattedDayOfMonth-$formattedMonth-$year"
@@ -199,7 +200,7 @@ abstract class EventsActivity  : ActivityPermissions() , DatabaseManagerObserver
             imageUri = uri.toString()
             loadImage(uri.toString())
         } else {
-            Constants.showSnackBar(binding.root, context.getString(R.string.error_intent_get_content_failed))
+            Utils.showSnackBar(binding.root, context.getString(R.string.error_intent_get_content_failed))
         }
     }
 

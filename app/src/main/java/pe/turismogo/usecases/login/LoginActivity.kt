@@ -14,25 +14,23 @@ import com.google.firebase.auth.FirebaseAuthInvalidUserException
 
 import pe.turismogo.R
 import pe.turismogo.assets.InputTextWatcher
-import pe.turismogo.data.AuthManager
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.databinding.ActivityLoginBinding
 import pe.turismogo.factory.MessageFactory
-import pe.turismogo.interfaces.ISetup
 import pe.turismogo.model.domain.User
 import pe.turismogo.observable.auth.AuthObserver
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
+import pe.turismogo.usecases.base.ActivityBase
 import pe.turismogo.util.Constants
 import pe.turismogo.util.Enums
 import pe.turismogo.util.Navigation
+import pe.turismogo.util.Utils
 
 class LoginActivity :
-    AppCompatActivity(), ISetup,
-    DatabaseManagerObserver.UserUpdateObserver,
+    ActivityBase(),
+    DatabaseObserver.UserUpdateObserver,
     AuthObserver.AuthSession {
 
-    var context : Context = this
-    var activity : Activity = this
     private lateinit var binding : ActivityLoginBinding
     private var shouldKeepScreenCondition = true
 
@@ -78,7 +76,7 @@ class LoginActivity :
 
     override fun setClickEvents() {
         binding.btnLoginContinue.setOnClickListener {
-            if(validateInputsForLogin()) {
+            if(validateInputs()) {
                 val dialogFactory = MessageFactory()
                 dialog = dialogFactory.getDialog(context, MessageFactory.TYPE_WAIT).create()
                 dialog.show()
@@ -107,18 +105,19 @@ class LoginActivity :
         binding.etPasswordLogin.addTextChangedListener(InputTextWatcher(binding.tilPasswordLogin))
     }
 
-    private fun validateInputsForLogin() : Boolean {
-
-        val email = binding.etEmailLogin.editableText
-        val password = binding.etPasswordLogin.editableText
-        if(email.isNullOrEmpty() || email.isBlank()) {
-            binding.tilEmailLogin.error = getString(R.string.error_email_required)
-            return false
-        } else if (password.isNullOrEmpty() || password.isBlank()) {
-            binding.tilPasswordLogin.error = getString(R.string.error_password_required)
-            return false
-        } else
-            return true
+    override fun validateInputs(): Boolean {
+        return if(!validateInput(
+                binding.etEmailLogin,
+                binding.tilEmailLogin,
+                context.getString(R.string.error_email_required)))
+            false
+        else if (!validateInput(
+                binding.etPasswordLogin,
+                binding.tilPasswordLogin,
+                context.getString(R.string.error_password_required)))
+            false
+        else
+            true
     }
 
     override fun notifyUserUpdateObservers(user: User) {
@@ -127,12 +126,12 @@ class LoginActivity :
         Log.d(Constants.TAG_COMMON, "user role to compare: ${Enums.Role.BUSINESS.name}")
         when(user.role) {
             Enums.Role.USER.name -> {
-                Constants.showToast(context, context.getString(R.string.prompt_welcome))
+                Utils.showToast(context, context.getString(R.string.prompt_welcome))
                 Navigation.toUserHomeMenu(context)
                 return
             }
             Enums.Role.BUSINESS.name ->  {
-                Constants.showToast(context, context.getString(R.string.prompt_welcome))
+                Utils.showToast(context, context.getString(R.string.prompt_welcome))
                 Navigation.toAdminHomeMenu(context)
                 return
             }
@@ -140,26 +139,26 @@ class LoginActivity :
                 shouldKeepScreenCondition = false
 
                 DatabaseManager.getInstance().getAuth().signOut()
-                Constants.showSnackBar(binding.root, context.getString(R.string.error_fetching_user_data))
+                Utils.showSnackBar(binding.root, context.getString(R.string.error_fetching_user_data))
             }
         }
     }
 
     override fun notifyAuthSessionObservers(isLogged: Boolean, uid: String?, exception: Any?) {
         if(!isLogged) {
-            dialog.dismiss()
+            try {dialog.dismiss() } catch (ignored : Exception) { /*NTD*/ }
             when(exception) {
                 is FirebaseAuthInvalidCredentialsException -> {
-                    Constants.showSnackBar(binding.root, context.getString(R.string.error_invalid_credentials))
+                    Utils.showSnackBar(binding.root, context.getString(R.string.error_invalid_credentials))
                 }
                 is FirebaseAuthEmailException -> {
-                    Constants.showSnackBar(binding.root, context.getString(R.string.error_email_not_found))
+                    Utils.showSnackBar(binding.root, context.getString(R.string.error_email_not_found))
                 }
                 is FirebaseAuthInvalidUserException -> {
-                    Constants.showSnackBar(binding.root, context.getString(R.string.error_user_not_found))
+                    Utils.showSnackBar(binding.root, context.getString(R.string.error_user_not_found))
                 }
                 else -> {
-                    Constants.showSnackBar(binding.root, context.getString(R.string.error_fetching_user_data))
+                    Utils.showSnackBar(binding.root, context.getString(R.string.error_fetching_user_data))
                 }
             }
         }

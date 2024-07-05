@@ -1,0 +1,7 @@
+Model:
+
+Paquete relacionado con los elementos de la logica del negocio.
+
+- Domain: Clases que abstraen la logica del negocio en entidades
+
+- Session: Clases que son utilizadas internamente con el patron SINGLETON

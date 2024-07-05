@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.util.Constants
 
-class PanelViewModel : ViewModel() , DatabaseManagerObserver.EventUpdateObserver {
+class PanelViewModel : ViewModel() , DatabaseObserver.EventUpdateObserver {
 
     //opciones para el filtro
     companion object {

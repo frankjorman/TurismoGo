@@ -1,0 +1,11 @@
+Factory:
+
+Paquete que almacena los elementos que se utilizan en la app como AlertDialog, DatePicker y PopUp Menu
+que per se utilizan un patron creacional (builder) sin embargo se combina con el patron FACTORY
+para facilitar su uso.
+
+- DatePickerFactory: Fabrica de Date Pickers
+
+- MenuFactory: Fabrica de PopUp
+
+- MessageFactory: Fabrica de AlertDialogs

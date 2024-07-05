@@ -1,25 +1,47 @@
 package pe.turismogo.data
 
 import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import pe.turismogo.model.domain.User
+import pe.turismogo.model.session.UserSingleton
 import pe.turismogo.observable.auth.AuthObservable
 import pe.turismogo.observable.auth.AuthObserver
 import pe.turismogo.util.Constants
 
-open class AuthManager : AuthObservable.AuthSession {
+open class AuthManager :
+    AuthObservable.AuthSession,
+    AuthObservable.AuthCreation,
+    AuthObservable.AuthRecovering {
 
     private var uid : String? = null
     private var email : String? = null
     private var isLogged : Boolean = false
 
     private var authSessionObserverList : ArrayList<AuthObserver.AuthSession> = arrayListOf()
+    private var authCreationObserverList : ArrayList<AuthObserver.AuthCreation> = arrayListOf()
+    private var authRecoveringObserverList : ArrayList<AuthObserver.AuthRecovering> = arrayListOf()
 
     //listener para el estado de autenticacion
     private val authStateListener = FirebaseAuth.AuthStateListener { task ->
         Log.d(Constants.TAG_COMMON, "auth state changed")
         setAuthLogin(task.currentUser != null, task.currentUser?.uid, task.currentUser?.email)
     }
+
+    private val authCreationListener =
+        OnCompleteListener<AuthResult> { p0 ->
+            if(p0.isSuccessful) {
+                UserSingleton.getInstance().getUser()?.id = p0.result?.user?.uid.toString()
+            }
+            notifyAuthCreationObservers(p0.isSuccessful, p0.exception)
+        }
+
+    private val authRecoveringListener = OnCompleteListener<Void> {
+        notifyAuthRecoveringObservers(it.isSuccessful)
+    }
+
 
     init {
         FirebaseAuth
@@ -29,6 +51,15 @@ open class AuthManager : AuthObservable.AuthSession {
 
     private fun removeUserReference() {
         FirebaseAuth.getInstance().removeAuthStateListener(authStateListener)
+    }
+
+    @JvmName("createUserAccountWithEmailAndPassword")
+    fun createUserAccount(user : User) {
+        UserSingleton.getInstance().setUser(user)
+
+        FirebaseAuth.getInstance()
+            .createUserWithEmailAndPassword(user.email, user.password)
+            .addOnCompleteListener(authCreationListener)
     }
 
     @JvmName("logInWithEmailAndPassword")
@@ -46,6 +77,13 @@ open class AuthManager : AuthObservable.AuthSession {
                 }
 
             }
+    }
+
+    @JvmName("recoverAccountUsingEmail")
+    fun recoverAccountUsingEmail(email : String) {
+        FirebaseAuth.getInstance()
+            .sendPasswordResetEmail(email)
+            .addOnCompleteListener(authRecoveringListener)
     }
 
     private fun setAuthLogin(isLogged: Boolean, uid : String?, exception : Any?) {
@@ -83,6 +121,34 @@ open class AuthManager : AuthObservable.AuthSession {
     override fun notifyAuthSessionObservers(isLogged : Boolean, uid : String?, exception : Any?) {
         authSessionObserverList.forEach {
             it.notifyAuthSessionObservers(isLogged, uid, exception)
+        }
+    }
+
+    override fun addAuthCreationObserver(observer: AuthObserver.AuthCreation) {
+        authCreationObserverList.add(observer)
+    }
+
+    override fun removeAuthCreationObserver(observer: AuthObserver.AuthCreation) {
+        authCreationObserverList.remove(observer)
+    }
+
+    override fun notifyAuthCreationObservers(isSuccessfull: Boolean, message: Any?) {
+        authCreationObserverList.forEach {
+            it.notifyAuthCreationObservers(isSuccessfull, message)
+        }
+    }
+
+    override fun addAuthRecoveringObserver(observer: AuthObserver.AuthRecovering) {
+        authRecoveringObserverList.add(observer)
+    }
+
+    override fun removeAuthRecoveringObserver(observer: AuthObserver.AuthRecovering) {
+        authRecoveringObserverList.remove(observer)
+    }
+
+    override fun notifyAuthRecoveringObservers(isSuccessfull: Boolean) {
+        authRecoveringObserverList.forEach {
+            it.notifyAuthRecoveringObservers(isSuccessfull)
         }
     }
 }

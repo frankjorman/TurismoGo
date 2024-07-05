@@ -66,21 +66,20 @@ dependencies {
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.annotation
-    implementation libs.androidx.lifecycle.livedata.ktx
-    implementation libs.androidx.lifecycle.viewmodel.ktx
-    implementation libs.androidx.core.splashscreen
-    implementation libs.firebase.database.ktx
-    implementation libs.firebase.auth.ktx
     implementation libs.androidx.ui.desktop
-    implementation libs.firebase.storage.ktx
+
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+
+    //ADDED BUILT LIBRARIES
+    implementation libs.androidx.core.splashscreen
     implementation libs.androidx.lifecycle.viewmodel.ktx.v262
     implementation libs.androidx.navigation.ui.ktx
+    implementation libs.androidx.lifecycle.livedata.ktx
+    implementation libs.androidx.lifecycle.viewmodel.ktx
 
-
-    ///OTHERS LIBRARIES
+    ///OTHERS LIBRARIES - 3rd Party
     implementation libs.circleimageview //Circle Image View
     implementation (libs.glide) {
         exclude group: "com.android.support"
@@ -88,8 +87,12 @@ dependencies {
     implementation (libs.gson) //Json to Gson converter
 
 
+
     //FIREBASE LIBRARIES
-    implementation platform('com.google.firebase:firebase-bom:33.1.0') //Reference to BOM Firebase
-    implementation 'com.google.firebase:firebase-analytics' //analytics
+    implementation platform(libs.firebase.bom) //Reference to BOM Firebase
+    implementation libs.firebase.analytics //analytics
+    implementation libs.firebase.database.ktx //Realtime database
+    implementation libs.firebase.storage.ktx //storage
+    implementation libs.firebase.auth.ktx //authentication
 
 }

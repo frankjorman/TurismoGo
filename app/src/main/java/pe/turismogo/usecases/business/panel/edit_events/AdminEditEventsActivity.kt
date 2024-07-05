@@ -1,21 +1,17 @@
 package pe.turismogo.usecases.business.panel.edit_events
 
-import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import com.bumptech.glide.Glide
 import pe.turismogo.R
 import pe.turismogo.data.CacheManager
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.factory.MessageFactory
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.usecases.business.panel.base.EventsActivity
 import pe.turismogo.util.Constants
-import pe.turismogo.util.Permissions
+import pe.turismogo.util.Utils
 
-class AdminEditEventsActivity : EventsActivity(), DatabaseManagerObserver.EventInsertObserver {
+class AdminEditEventsActivity : EventsActivity(), DatabaseObserver.EventInsertObserver {
 
     private lateinit var event : Event
 
@@ -91,10 +87,10 @@ class AdminEditEventsActivity : EventsActivity(), DatabaseManagerObserver.EventI
     override fun notifyEventInsertObservers(isSuccessful: Boolean) {
         dialog.dismiss()
         if(isSuccessful) {
-            Constants.showToast(context, context.getString(R.string.success_event_updated))
+            Utils.showToast(context, context.getString(R.string.success_event_updated))
             finish()
         } else {
-            Constants.showToast(context, context.getString(R.string.error_event_update))
+            Utils.showToast(context, context.getString(R.string.error_event_update))
         }
     }
 }

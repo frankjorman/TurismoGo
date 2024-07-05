@@ -1,0 +1,18 @@
+Data:
+
+Paquete que centraliza la capa de datos, al utilizar Firebase, se utilizaron combinaciones de
+patrones de diseño que permitieran abstraer la complejidad y los callbacks asincronos convirtiendo
+el sistema en uno reactivo a traves de callbacks.
+
+- AuthManager: relacionado con acciones de autenticado (FirebaseAuth)
+
+- CacheManager: relacionado con almacenamiento temporal de informacion
+
+- DatabaseManager: Patron FACADE + SINGLETON + OBSERVER para centralizar y abstraer la logica del
+                   sistema.
+
+- DatabaseReference: Objeto con constantes y funciones relacionadas con FirebaseDatabase (RealtimeDB)
+
+- StorageReferences: Objeto con constantes y funciones relacionadas con StorageFirebase (multimedia)
+
+- StorageManager: relacionado con el almacenamiento y eliminacion de multimedia con StorageFirebase

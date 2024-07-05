@@ -6,10 +6,9 @@ import pe.turismogo.model.domain.Event
 import pe.turismogo.usecases.business.home.HomeAdminActivity
 import pe.turismogo.usecases.business.panel.create_events.AdminEventsActivity
 import pe.turismogo.usecases.business.panel.edit_events.AdminEditEventsActivity
+import pe.turismogo.usecases.business.profile.BusinessEditActivity
 import pe.turismogo.usecases.user.home.HomeActivity
 import pe.turismogo.usecases.login.LoginActivity
-import pe.turismogo.usecases.policies.PrivacyPoliciesActivity
-import pe.turismogo.usecases.policies.TermsAndConditionsActivity
 import pe.turismogo.usecases.recover.RecoverUserActivity
 import pe.turismogo.usecases.register.RegisterBusinessActivity
 import pe.turismogo.usecases.register.RegisterSelectionActivity
@@ -17,6 +16,7 @@ import pe.turismogo.usecases.register.RegisterUserActivity
 import pe.turismogo.usecases.user.dashboard.reservations.UserReservationsDetailsActivity
 import pe.turismogo.usecases.user.dashboard.reviews.UserEvaluateEventActivity
 import pe.turismogo.usecases.user.events.details.UserEventDetailsActivity
+import pe.turismogo.usecases.user.profile.EditUserActivity
 
 
 /***
@@ -66,21 +66,21 @@ object Navigation {
         context.startActivity(intent)
     }
 
-    /**
-     * Navega al menú de Terminos y condiciones
-     */
-    fun toTermsAndConditions(context: Context) {
-        val intent = Intent(context, TermsAndConditionsActivity::class.java)
-        context.startActivity(intent)
-    }
-
-    /**
-     * Navega al menú de Politicas de Privacidad
-     */
-    fun toPrivacyPolicies(context: Context) {
-        val intent = Intent(context, PrivacyPoliciesActivity::class.java)
-        context.startActivity(intent)
-    }
+//    /**
+//     * Navega al menú de Terminos y condiciones
+//     */
+//    fun toTermsAndConditions(context: Context) {
+//        val intent = Intent(context, TermsAndConditionsActivity::class.java)
+//        context.startActivity(intent)
+//    }
+//
+//    /**
+//     * Navega al menú de Politicas de Privacidad
+//     */
+//    fun toPrivacyPolicies(context: Context) {
+//        val intent = Intent(context, PrivacyPoliciesActivity::class.java)
+//        context.startActivity(intent)
+//    }
 
     /**
      * Navega al menú principal del usuario
@@ -106,7 +106,7 @@ object Navigation {
         context.startActivity(intent)
     }
 
-    fun toEventEdit(context : Context, event : Event) {
+    fun toEventEdit(context : Context) {
         val intent = Intent(context, AdminEditEventsActivity::class.java)
         context.startActivity(intent)
     }
@@ -132,5 +132,15 @@ object Navigation {
         context.startActivity(intent)
     }
 
+    fun toEditUser(context: Context) {
+        val intent = Intent(context, EditUserActivity::class.java)
+        context.startActivity(intent)
+
+    }
+
+    fun toEditBusiness(context: Context) {
+        val intent = Intent(context, BusinessEditActivity::class.java)
+        context.startActivity(intent)
+    }
 
 }

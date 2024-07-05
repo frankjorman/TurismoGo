@@ -9,6 +9,14 @@ interface AuthObserver {
         fun notifyAuthUserObservers(user : User?)
     }
 
+    interface AuthRecovering {
+        fun notifyAuthRecoveringObservers(isSuccessfull: Boolean)
+    }
+
+    interface AuthCreation {
+        fun notifyAuthCreationObservers(isSuccessful: Boolean, message: Any?)
+    }
+
     interface AuthSession {
         fun notifyAuthSessionObservers(isLogged: Boolean, uid: String?, exception: Any?)
     }

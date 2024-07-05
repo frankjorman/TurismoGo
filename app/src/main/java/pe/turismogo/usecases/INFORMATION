@@ -1,0 +1,17 @@
+UseCases:
+
+Es el paquete que almacena cada uno de los escenarios que la aplicacion maneja, tales como
+actividades y fragmentos, los cuales forman parte del ciclo de vida de la app.
+
+- Base: Actividades abstractas que permiten reutilizar el ViewBinding o procedimientos utilizados
+        comunmente.
+
+- Business: Actividades relacionadas con el ciclo de vida de la app para el lado de EMPRESA
+
+- Login: Actividad con Splash de nueva generacion retrocompatible y funciones de inicio de sesion
+
+- Recover: Funciones de recuperacion de cuenta
+
+- Register: Registro de usuario como EMPRESA o como USUARIO con sus formularios respectivos
+
+- User: Actividades relacionadas con el ciclo de vida de la app para el lado de USUARIO

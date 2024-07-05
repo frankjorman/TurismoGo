@@ -11,6 +11,7 @@ import pe.turismogo.R
 import pe.turismogo.interfaces.IOnEventClickListener
 import pe.turismogo.model.domain.Event
 import pe.turismogo.util.Constants
+import pe.turismogo.util.Utils
 
 class ReservationUserViewHolder
     (view : View, private val listener : IOnEventClickListener)
@@ -30,7 +31,7 @@ class ReservationUserViewHolder
 
         val name = event.title
         val description = event.description
-        val days = Constants.calculateDaysBetween(event.departureDate, event.returnDate)
+        val days = Utils.calculateDaysBetween(event.departureDate, event.returnDate)
         val date = "${context.getString(R.string.prompt_date_departure)}: ${event.departureDate} - $days days"
 
 

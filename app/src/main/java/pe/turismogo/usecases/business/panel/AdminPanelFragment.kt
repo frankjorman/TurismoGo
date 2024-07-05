@@ -1,10 +1,7 @@
 package pe.turismogo.usecases.business.panel
 
-import android.app.Activity
 import android.app.AlertDialog
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,31 +15,26 @@ import pe.turismogo.databinding.FragmentAdminPanelBinding
 import pe.turismogo.factory.MenuFactory
 import pe.turismogo.factory.MessageFactory
 import pe.turismogo.interfaces.IOnEventPanelClickListener
-import pe.turismogo.interfaces.ISetup
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
+import pe.turismogo.usecases.base.FragmentBase
 import pe.turismogo.usecases.business.home.HomeAdminActivity
-import pe.turismogo.util.Constants
+import pe.turismogo.usecases.user.events.EventViewModel
 import pe.turismogo.util.Navigation
+import pe.turismogo.util.Utils
 
 
-class AdminPanelFragment : Fragment(),
-    ISetup,
+class AdminPanelFragment : FragmentBase(),
     IOnEventPanelClickListener,
-    DatabaseManagerObserver.EventDeleteObserver {
+    DatabaseObserver.EventDeleteObserver {
 
-    private lateinit var context : Context
-    private lateinit var activity : Activity
     private lateinit var binding : FragmentAdminPanelBinding
-    private lateinit var dialog : androidx.appcompat.app.AlertDialog
 
     private val panelViewModel : PanelViewModel get() = (activity as HomeAdminActivity).panelViewModel
     private val eventBusinessAdapter = EventBusinessAdapter(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        context = requireContext()
-        activity = requireActivity()
         DatabaseManager.getInstance().addEventDeleteObservable(this)
     }
 
@@ -78,7 +70,7 @@ class AdminPanelFragment : Fragment(),
     }
 
     override fun setClickEvents() {
-        binding.btnAddEvent.setOnClickListener { Navigation.toEventAdd(context) }
+        binding.btnAddEvent.setOnClickListener { Navigation.toEventAdd(fragContext) }
 
         binding.contentPanel.options.setOnClickListener {
             val popupMenu = MenuFactory().getMenu(binding.contentPanel.options, MenuFactory.TYPE_PANEL_FILTER)
@@ -88,7 +80,7 @@ class AdminPanelFragment : Fragment(),
                 when (item?.itemId) {
                     R.id.panel_filter_title -> {
                         binding.contentPanel.tilSearchPanel.isEnabled = true
-                        panelViewModel.setFilterType(PanelViewModel.TYPE_OPTION_NAME)
+                        panelViewModel.setFilterType(EventViewModel.TYPE_OPTION_DEPARTURE)
                     }
                     R.id.panel_filter_date -> {
                         binding.contentPanel.tilSearchPanel.isEnabled = true
@@ -115,7 +107,6 @@ class AdminPanelFragment : Fragment(),
     }
 
     override fun setInputEvents() {
-        super.setInputEvents()
 
         binding.contentPanel.etSearchPanel.addTextChangedListener {
             val search = it.toString()
@@ -125,20 +116,20 @@ class AdminPanelFragment : Fragment(),
     }
 
     override fun onEditClick(event: Event) {
-        CacheManager.getInstance().saveEventCache(activity, event)
-        Navigation.toEventEdit(context, event)
+        CacheManager.getInstance().saveEventCache(fragActivity, event)
+        Navigation.toEventEdit(fragContext)
     }
 
     override fun onDeleteClick(event: Event) {
-        dialog = MessageFactory().getDialog(context, MessageFactory.TYPE_ACCEPT_CANCEL).create()
-        val deleteMessage = "${context.getString(R.string.delete_action_begin)} \"${event.title}\" ${context.getString(R.string.delete_action_end)} "
+        dialog = MessageFactory().getDialog(fragContext, MessageFactory.TYPE_ACCEPT_CANCEL).create()
+        val deleteMessage = "${fragContext.getString(R.string.delete_action_begin)} \"${event.title}\" ${fragContext.getString(R.string.delete_action_end)} "
 
         dialog.setMessage(deleteMessage)
         dialog.show()
 
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
             dialog.dismiss()
-            dialog = MessageFactory().getDialog(context, MessageFactory.TYPE_LOAD).create()
+            dialog = MessageFactory().getDialog(fragContext, MessageFactory.TYPE_LOAD).create()
             dialog.show()
 
 //            DatabaseManager.getInstance().deleteEvent(event)
@@ -165,9 +156,9 @@ class AdminPanelFragment : Fragment(),
     override fun notifyEventDeleteObservers(isSuccessful: Boolean) {
         dialog.dismiss()
         if(isSuccessful) {
-            Constants.showToast(context, context.getString(R.string.success_event_delete))
+            Utils.showToast(fragContext, fragContext.getString(R.string.success_event_delete))
         } else {
-            Constants.showToast(context, context.getString(R.string.error_event_delete))
+            Utils.showToast(fragContext, fragContext.getString(R.string.error_event_delete))
         }
     }
 }

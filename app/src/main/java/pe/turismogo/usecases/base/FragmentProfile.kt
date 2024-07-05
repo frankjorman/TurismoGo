@@ -13,18 +13,20 @@ import pe.turismogo.databinding.FragmentProfileBinding
 import pe.turismogo.factory.MessageFactory
 import pe.turismogo.model.domain.User
 import pe.turismogo.observable.auth.AuthObserver
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.model.session.UserSingleton
 import pe.turismogo.util.Constants
 import pe.turismogo.util.Navigation
+import pe.turismogo.util.Utils
 
 abstract class FragmentProfile : FragmentBase(),
     AuthObserver.AuthSession,
-    DatabaseManagerObserver.UserUpdateObserver {
+    DatabaseObserver.UserUpdateObserver {
 
     protected lateinit var binding : FragmentProfileBinding
 
     abstract fun updateUserData(user : User)
+    abstract fun toEditProfile()
 
 
     override fun onResume() {
@@ -61,6 +63,11 @@ abstract class FragmentProfile : FragmentBase(),
     }
 
     override fun setClickEvents() {
+
+        binding.content.profile.btnOption.setOnClickListener {
+            toEditProfile()
+        }
+
         binding.content.option3.root.setOnClickListener {
             DatabaseManager.getInstance().getAuth().signOut()
         }
@@ -76,7 +83,7 @@ abstract class FragmentProfile : FragmentBase(),
 
     private fun delay() {
         val runnable = Runnable {
-            Constants.showToast(fragContext, fragContext.getString(R.string.success_account_sign_out))
+            Utils.showToast(fragContext, fragContext.getString(R.string.success_account_sign_out))
             Navigation.toLogin(fragContext)
         }
 

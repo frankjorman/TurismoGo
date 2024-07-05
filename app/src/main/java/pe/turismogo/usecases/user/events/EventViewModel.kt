@@ -5,15 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.util.Constants
 
-class EventViewModel : ViewModel(), DatabaseManagerObserver.EventsObserver {
+class EventViewModel : ViewModel(), DatabaseObserver.EventsObserver {
 
     //opciones para el filtro
     companion object {
         const val TYPE_OPTION_ALL = "typeAll"
-        const val TYPE_OPTION_DATES = "typeDates"
+        const val TYPE_OPTION_DEPARTURE = "typeDeparture"
+        const val TYPE_OPTION_RETURN = "typeReturn"
         const val TYPE_OPTION_DESCRIPTION = "typeDescription"
     }
 
@@ -53,9 +54,12 @@ class EventViewModel : ViewModel(), DatabaseManagerObserver.EventsObserver {
 
         if(search.isNotEmpty()) { //si la entrada no es vacia entonces...
             when(filterType.value) { //se evaluan los tipos de filtro
-                TYPE_OPTION_DATES -> { //se busca por fechas inicio y fin
+                TYPE_OPTION_DEPARTURE -> { //se busca por fechas inicio y fin
                     val departureEvents =  allEventsList.value?.filter { it.departureDate.contains(search, true) }
-                    val returnEvents = departureEvents?.filter { it.returnDate.contains(search, true) }
+                    filteredList.value = departureEvents ?: allEventsList.value
+                }
+                TYPE_OPTION_RETURN -> {
+                    val returnEvents = allEventsList?.value?.filter { it.returnDate.contains(search, true) }
                     filteredList.value = returnEvents ?: allEventsList.value
                 }
                 TYPE_OPTION_DESCRIPTION -> { //se busca por descripcion del evento

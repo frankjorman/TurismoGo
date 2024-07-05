@@ -1,11 +1,8 @@
 package pe.turismogo.usecases.user.dashboard.reviews
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -18,13 +15,14 @@ import pe.turismogo.databinding.ActivityUserEvaluateEventBinding
 import pe.turismogo.factory.MessageFactory
 import pe.turismogo.model.domain.Review
 import pe.turismogo.model.session.UserSingleton
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.usecases.base.ActivityBase
 import pe.turismogo.util.Constants
 import pe.turismogo.util.Navigation
+import pe.turismogo.util.Utils
 
 class UserEvaluateEventActivity : ActivityBase(),
-    DatabaseManagerObserver.EventInsertObserver {
+    DatabaseObserver.EventInsertObserver {
 
     private lateinit var binding : ActivityUserEvaluateEventBinding
 
@@ -102,7 +100,7 @@ class UserEvaluateEventActivity : ActivityBase(),
     }
 
     private fun saveReview() {
-        UserSingleton.getInstance().getUser()?.let { user ->
+        UserSingleton.getInstance().getUser()?.let {
             val event = CacheManager.getInstance().getEventCache(activity)
 
 
@@ -170,10 +168,10 @@ class UserEvaluateEventActivity : ActivityBase(),
     override fun notifyEventInsertObservers(isSuccessful: Boolean) {
         dialog.dismiss()
         if(isSuccessful) {
-            Constants.showToast(context, context.getString(R.string.success_review_published))
+            Utils.showToast(context, context.getString(R.string.success_review_published))
             Navigation.toUserHomeMenu(context)
         } else
-            Constants.showToast(context, context.getString(R.string.error_review_publish))
+            Utils.showToast(context, context.getString(R.string.error_review_publish))
     }
 
 }

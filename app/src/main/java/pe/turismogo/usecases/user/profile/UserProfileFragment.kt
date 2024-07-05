@@ -3,9 +3,14 @@ package pe.turismogo.usecases.user.profile
 import pe.turismogo.R
 import pe.turismogo.model.domain.User
 import pe.turismogo.usecases.base.FragmentProfile
+import pe.turismogo.util.Navigation
 
 
 class UserProfileFragment : FragmentProfile() {
+
+    override fun toEditProfile() {
+        Navigation.toEditUser(fragContext)
+    }
 
     override fun updateUserData(user : User) {
         val nameInfo = "${user.name} ${user.lastname}"

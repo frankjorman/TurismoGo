@@ -13,6 +13,7 @@ import pe.turismogo.R
 import pe.turismogo.databinding.ActivityRegisterSelectionBinding
 import pe.turismogo.util.Constants
 import pe.turismogo.util.Navigation
+import pe.turismogo.util.Utils
 import java.util.Arrays
 
 class RegisterSelectionActivity : AppCompatActivity() {
@@ -53,7 +54,7 @@ class RegisterSelectionActivity : AppCompatActivity() {
             when(binding.actRoleSelection.text.toString()) {
                 context.getString(R.string.business_account) -> Navigation.toRegisterBusiness(context)
                 context.getString(R.string.user_account) -> Navigation.toRegisterUser(context)
-                else -> Constants.showSnackBar(binding.root, context.getString(R.string.invalid_selection)) //si no selecciona nada se muestra un mensaje
+                else -> Utils.showSnackBar(binding.root, context.getString(R.string.invalid_selection)) //si no selecciona nada se muestra un mensaje
             }
         }
     }

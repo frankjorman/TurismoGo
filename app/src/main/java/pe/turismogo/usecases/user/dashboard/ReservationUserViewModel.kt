@@ -5,13 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pe.turismogo.data.DatabaseManager
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
-import pe.turismogo.usecases.user.events.EventViewModel.Companion.TYPE_OPTION_ALL
-import pe.turismogo.usecases.user.events.EventViewModel.Companion.TYPE_OPTION_DATES
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
+import pe.turismogo.usecases.user.events.EventViewModel.Companion.TYPE_OPTION_DEPARTURE
 import pe.turismogo.usecases.user.events.EventViewModel.Companion.TYPE_OPTION_DESCRIPTION
 import pe.turismogo.util.Constants
 
-class ReservationUserViewModel : ViewModel(), DatabaseManagerObserver.EventsObserver {
+class ReservationUserViewModel : ViewModel(), DatabaseObserver.EventsObserver {
 
     private val allEventsList : MutableLiveData<List<Event>> = MutableLiveData()
 
@@ -43,7 +42,7 @@ class ReservationUserViewModel : ViewModel(), DatabaseManagerObserver.EventsObse
 
         if(search.isNotEmpty()) { //si la entrada no es vacia entonces...
             when(filterType.value) { //se evaluan los tipos de filtro
-                TYPE_OPTION_DATES -> { //se busca por fechas inicio y fin
+                TYPE_OPTION_DEPARTURE -> { //se busca por fechas inicio y fin
                     val departureEvents =  allEventsList.value?.filter { it.departureDate.contains(search, true) }
                     val returnEvents = departureEvents?.filter { it.returnDate.contains(search, true) }
                     filteredList.value = returnEvents ?: allEventsList.value

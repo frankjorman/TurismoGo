@@ -21,6 +21,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.google.android.material.button.MaterialButton
+                style="@style/Button.IconNatural"
+                android:id="@+id/options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="end"
+                app:icon="@drawable/icon_more_vertical"
+                app:iconSize="26dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,41 +39,21 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Input.Outlined.NoError"
-                    android:id="@+id/tilSearchPanel"
+                    android:id="@+id/tilSearchEvent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="6.8"
+                    android:layout_weight="4"
                     android:hint="@string/prompt_search"
                     app:endIconMode="custom"
                     app:endIconDrawable="@drawable/icon_search">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etSearchPanel"
+                        android:id="@+id/etSearchEvent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Button.IconNatural"
-                    android:id="@+id/options"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1.2"
-                    app:icon="@drawable/icon_more_vertical"
-                    app:iconSize="26dp" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="8">
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Input.Outlined.NoError"
@@ -85,24 +75,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Input.Outlined.NoError"
-                    android:id="@+id/tilSearchDateEnd"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="4"
-                    android:hint="@string/prompt_date_return"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/icon_calendar_today">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etExcursionDateEnd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:enabled="false"
-                        />
-
-                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 

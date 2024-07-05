@@ -5,13 +5,18 @@
         android:id="@+id/menu_user_home"
         android:enabled="true"
         android:title="@string/prompt_home"
-        android:icon="@drawable/icon_home_store"/>
-
+        android:icon="@drawable/icon_travel"/>
 
     <item
         android:id="@+id/menu_user_dashboard"
         android:enabled="true"
         android:title="@string/prompt_dashboard"
+        android:icon="@drawable/icon_library"/>
+
+    <item
+        android:id="@+id/menu_user_history"
+        android:enabled="true"
+        android:title="@string/prompt_history"
         android:icon="@drawable/icon_list_items"/>
 
     <item

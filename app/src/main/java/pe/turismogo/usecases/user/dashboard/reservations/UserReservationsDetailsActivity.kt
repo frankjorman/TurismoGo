@@ -1,13 +1,8 @@
 package pe.turismogo.usecases.user.dashboard.reservations
 
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import pe.turismogo.R
-import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
 import pe.turismogo.usecases.user.base.EventDetailsActivity
-import pe.turismogo.usecases.user.dashboard.reviews.ReviewUserAdapter
-import pe.turismogo.util.Constants
 import pe.turismogo.util.Navigation
 
 class UserReservationsDetailsActivity : EventDetailsActivity() {

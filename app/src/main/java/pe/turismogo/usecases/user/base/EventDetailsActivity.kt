@@ -1,6 +1,7 @@
 package pe.turismogo.usecases.user.base
 
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -10,12 +11,12 @@ import pe.turismogo.R
 import pe.turismogo.data.CacheManager
 import pe.turismogo.databinding.ActivityUserEventDetailsBinding
 import pe.turismogo.model.domain.Event
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.usecases.base.ActivityBase
 import pe.turismogo.usecases.user.dashboard.reviews.ReviewUserAdapter
 
 abstract class EventDetailsActivity : ActivityBase(),
-    DatabaseManagerObserver.EventInsertObserver {
+    DatabaseObserver.EventInsertObserver {
 
     protected lateinit var binding : ActivityUserEventDetailsBinding
     protected lateinit var dialog : AlertDialog
@@ -27,6 +28,7 @@ abstract class EventDetailsActivity : ActivityBase(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         binding = ActivityUserEventDetailsBinding.inflate(activity.layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

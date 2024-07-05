@@ -6,6 +6,7 @@ import com.google.android.material.textview.MaterialTextView
 import pe.turismogo.R
 import pe.turismogo.model.domain.User
 import pe.turismogo.util.Constants
+import pe.turismogo.util.Utils
 
 class ManagementViewHolder(view : View) : RecyclerView.ViewHolder(view) {
     private val context = view.context
@@ -15,8 +16,7 @@ class ManagementViewHolder(view : View) : RecyclerView.ViewHolder(view) {
 
     fun bind(user : User) {
         val name = "${user.name} ${user.lastname}"
-        val age = Constants.calculateAge(user.dateOfBirth)
-        val phone = user.phone
+        val age = Utils.calculateAge(user.dateOfBirth)
 
         tvUserName.text = name
         tvUserAge.text = age.toString()

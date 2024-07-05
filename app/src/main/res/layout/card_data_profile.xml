@@ -55,21 +55,22 @@
                 android:layout_marginBottom="10dp"
                 android:text="@string/placeholder_subtitle"/>
 
-            <View
-                android:id="@+id/icon"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+            <com.google.android.material.button.MaterialButton
+                style="@style/Button.IconNatural"
+                android:id="@+id/btnOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
-                android:background="@drawable/icon_edit" />
+                app:icon="@drawable/icon_edit" />
 
             <com.google.android.material.textview.MaterialTextView
                 style="@style/Text.Subtitle"
                 android:id="@+id/optionDescription2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/icon"
+                android:layout_below="@id/btnOption"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="15dp"

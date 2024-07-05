@@ -9,6 +9,18 @@ interface AuthObservable {
         fun notifyAuthUserObservers(boolean : Boolean)
     }
 
+    interface AuthRecovering {
+        fun addAuthRecoveringObserver(observer : AuthObserver.AuthRecovering)
+        fun removeAuthRecoveringObserver(observer : AuthObserver.AuthRecovering)
+        fun notifyAuthRecoveringObservers(isSuccessfull: Boolean)
+    }
+
+    interface AuthCreation {
+        fun addAuthCreationObserver(observer : AuthObserver.AuthCreation)
+        fun removeAuthCreationObserver(observer : AuthObserver.AuthCreation)
+        fun notifyAuthCreationObservers(isSuccessfull: Boolean, message: Any?)
+    }
+
     interface AuthSession {
         fun addAuthSessionObserver(observer : AuthObserver.AuthSession)
         fun removeAuthSessionObserver(observer : AuthObserver.AuthSession)

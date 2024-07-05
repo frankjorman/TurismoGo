@@ -10,6 +10,7 @@ class DatePickerFactory  {
     companion object {
         const val TYPE_FWD_DATE = "typeOnlyFwdDate"
         const val TYPE_ANY_DATE = "typeAnyDate"
+        const val TYPE_BWD_DATE = "typeOnlyBwdDate"
     }
 
     fun getPickerDialog(context : Context, type : String, listener : OnDateSetListener) : DatePickerDialog {
@@ -33,6 +34,11 @@ class DatePickerFactory  {
                 calendar[Calendar.DAY_OF_MONTH] = day
                 return datePickerDialog
             }
+            TYPE_BWD_DATE -> {
+                calendar[Calendar.YEAR] = year
+                datePickerDialog.datePicker.maxDate = calendar.timeInMillis
+                return datePickerDialog
+             }
             else -> {
                 return datePickerDialog
             }

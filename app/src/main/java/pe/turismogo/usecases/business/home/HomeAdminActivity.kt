@@ -5,24 +5,20 @@ import android.content.Context
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import pe.turismogo.R
 import pe.turismogo.databinding.ActivityHomeAdminBinding
-import pe.turismogo.interfaces.ISetup
-import pe.turismogo.usecases.business.control.AdminControlFragment
+import pe.turismogo.usecases.base.ActivityBase
 import pe.turismogo.usecases.business.management.AdminManagementFragment
 import pe.turismogo.usecases.business.management.ManagementViewModel
 import pe.turismogo.usecases.business.panel.AdminPanelFragment
 import pe.turismogo.usecases.business.panel.PanelViewModel
 import pe.turismogo.usecases.business.profile.AdminProfileFragment
 
-class HomeAdminActivity : AppCompatActivity(), ISetup {
+class HomeAdminActivity : ActivityBase() {
 
-    private var context : Context = this
-    private var activity : Activity = this
     private lateinit var binding : ActivityHomeAdminBinding
 
     val panelViewModel : PanelViewModel by viewModels()
@@ -64,12 +60,20 @@ class HomeAdminActivity : AppCompatActivity(), ISetup {
         binding.navAdminUser.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.menu_admin_home -> replaceFragment(AdminPanelFragment())
-                R.id.menu_admin_control -> replaceFragment(AdminControlFragment())
                 R.id.menu_admin_profile -> replaceFragment(AdminProfileFragment())
                 R.id.menu_admin_management -> replaceFragment(AdminManagementFragment())
                 else -> replaceFragment(AdminPanelFragment())
             }
         }
+    }
+
+    override fun setInputEvents() {
+        //no se implementa
+    }
+
+    override fun validateInputs(): Boolean {
+        //no se implementa
+        return true
     }
 
 

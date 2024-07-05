@@ -1,0 +1,4 @@
+Observable:
+
+Paquete que almacena las interfaces utilizadas para la programacion reactiva, permitiendo su uso
+a lo largo de la app implementando segun se necesite.

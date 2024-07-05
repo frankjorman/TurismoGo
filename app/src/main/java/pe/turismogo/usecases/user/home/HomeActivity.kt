@@ -13,6 +13,8 @@ import pe.turismogo.usecases.user.dashboard.ReservationUserViewModel
 import pe.turismogo.usecases.user.dashboard.UserDashboardFragment
 import pe.turismogo.usecases.user.events.EventViewModel
 import pe.turismogo.usecases.user.events.UserEventsFragment
+import pe.turismogo.usecases.user.history.HistoryUserViewModel
+import pe.turismogo.usecases.user.history.UserHistoryFragment
 import pe.turismogo.usecases.user.profile.UserProfileFragment
 
 class HomeActivity : ActivityBase()  {
@@ -21,6 +23,7 @@ class HomeActivity : ActivityBase()  {
 
     val eventViewModel : EventViewModel by viewModels()
     val reservationViewModel : ReservationUserViewModel by viewModels()
+    val historyViewModel : HistoryUserViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,7 @@ class HomeActivity : ActivityBase()  {
 
         eventViewModel.init()
         reservationViewModel.init()
+        historyViewModel.init()
 
         setDependencies()
     }
@@ -57,11 +61,14 @@ class HomeActivity : ActivityBase()  {
                 R.id.menu_user_home -> replaceFragment(UserEventsFragment())
                 //vista de historico aun no definida
                 R.id.menu_user_dashboard -> replaceFragment(UserDashboardFragment())
+                //vista de historico aun no definida
+                R.id.menu_user_history -> replaceFragment(UserHistoryFragment())
                 //visa de opciones, se piensa unir con el perfil de usuario
                 R.id.menu_user_profile -> replaceFragment(UserProfileFragment())
                 else -> replaceFragment(UserEventsFragment())
             }
         }
+
     }
 
     override fun setInputEvents() { TODO("Not yet implemented")  }

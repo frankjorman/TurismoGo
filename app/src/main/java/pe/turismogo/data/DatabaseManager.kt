@@ -10,8 +10,8 @@ import pe.turismogo.model.domain.Event
 import pe.turismogo.model.domain.Review
 import pe.turismogo.model.domain.User
 import pe.turismogo.observable.auth.AuthObserver
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObservable
-import pe.turismogo.observable.rtdatabase.DatabaseManagerObserver
+import pe.turismogo.observable.rtdatabase.DatabaseObservable
+import pe.turismogo.observable.rtdatabase.DatabaseObserver
 import pe.turismogo.observable.storage.StoreObserver
 import pe.turismogo.model.session.UserSingleton
 import pe.turismogo.util.Constants
@@ -19,12 +19,13 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 class DatabaseManager :
-    DatabaseManagerObservable.UserUpdateObservable,
-    DatabaseManagerObservable.EventInsertObservable,
-    DatabaseManagerObservable.EventDeleteObservable,
-    DatabaseManagerObservable.EventUpdateObservable,
-    DatabaseManagerObservable.EventsObservable,
+    DatabaseObservable.UserUpdateObservable,
+    DatabaseObservable.EventInsertObservable,
+    DatabaseObservable.EventDeleteObservable,
+    DatabaseObservable.EventUpdateObservable,
+    DatabaseObservable.EventsObservable,
     AuthObserver.AuthSession,
+    AuthObserver.AuthCreation,
     StoreObserver.UploadImage,
     StoreObserver.DeleteImage {
 
@@ -48,12 +49,12 @@ class DatabaseManager :
 
     private lateinit var event : Event
 
-    private val updateObserverList : ArrayList<DatabaseManagerObserver.UserUpdateObserver> = arrayListOf()
-    private val eventInsertObserverList : ArrayList<DatabaseManagerObserver.EventInsertObserver> = arrayListOf()
-    private val eventDeleteObserverList : ArrayList<DatabaseManagerObserver.EventDeleteObserver> = arrayListOf()
+    private val updateObserverList : ArrayList<DatabaseObserver.UserUpdateObserver> = arrayListOf()
+    private val eventInsertObserverList : ArrayList<DatabaseObserver.EventInsertObserver> = arrayListOf()
+    private val eventDeleteObserverList : ArrayList<DatabaseObserver.EventDeleteObserver> = arrayListOf()
 
-    private val eventsFromUserObserverList : ArrayList<DatabaseManagerObserver.EventUpdateObserver> = arrayListOf()
-    private val allEventsObserverList : ArrayList<DatabaseManagerObserver.EventsObserver> = arrayListOf()
+    private val eventsFromUserObserverList : ArrayList<DatabaseObserver.EventUpdateObserver> = arrayListOf()
+    private val allEventsObserverList : ArrayList<DatabaseObserver.EventsObserver> = arrayListOf()
 
     private var userReference = DatabaseReferences.getRootUsers()
     private var eventsReference = DatabaseReferences.getRootEvents()
@@ -72,7 +73,7 @@ class DatabaseManager :
             if(snapshot.exists()) {
                 val temporalUser = snapshot.getValue(User::class.java)
                 if(temporalUser != null)
-                    updateUser(temporalUser)
+                    updateUserData(temporalUser)
             }
         }
 
@@ -81,12 +82,12 @@ class DatabaseManager :
         }
     }
 
-    private val eventInsertListener = OnCompleteListener<Void> {
+    private val dataInsertListener = OnCompleteListener<Void> {
         Log.d(Constants.TAG_COMMON, "event insert complete")
         notifyEventInsertObservers(it.isSuccessful)
     }
 
-    private val eventDeleteListener = OnCompleteListener<Void> {
+    private val dataDeleteListener = OnCompleteListener<Void> {
         Log.d(Constants.TAG_COMMON, "event delete complete")
         notifyEventDeleteObservers(it.isSuccessful)
     }
@@ -116,20 +117,25 @@ class DatabaseManager :
     private val allEventsListener = object : ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             if(snapshot.exists()) {
+
                 allEventsList.clear()
                 allReservedEventsList.clear()
                 allHistoryEventsList.clear()
-                snapshot.children.forEach {
-                    val event = it.getValue(Event::class.java)
-                    if(event != null && event.active) {
-                        if(!event.participants.contains(UserSingleton.getInstance().getUser()))
-                            allEventsList.add(event)
-                        else {
-                            Log.d(Constants.TAG_COMMON, "sending event to reserved list or history")
-                            if(event.active)
-                                allReservedEventsList.add(event)
-                            else
-                                allHistoryEventsList.add(event)
+
+                snapshot.children.forEach { snap -> //si el snapshot tiene hijos, se recorren
+                    UserSingleton.getInstance().getUser()?.let { user -> //si el usuario existe
+                        val event = snap.getValue(Event::class.java) //se convierte el snapshot a event
+                        event?.let { //si el evento no es nulo...
+                            if(it.participants.contains(user)) { //el usuario es participante del evento
+                                if(it.active) { //si el evento esta activo, entonces, es una reserva
+                                    allReservedEventsList.add(event)
+                                } else { //si el evento no esta activo, entonces es un evento viejo
+                                    allHistoryEventsList.add(event)
+                                }
+                            } else { //si no pertenece, entonces es un evento nuevo o disponible
+                                if(it.active)
+                                    allEventsList.add(event)
+                            }
                         }
                     }
                 }
@@ -145,6 +151,8 @@ class DatabaseManager :
 
     init {
         authManager.addAuthSessionObserver(this)
+        authManager.addAuthCreationObserver(this)
+
         storeManager.addUploadImageObserver(this)
         storeManager.addDeleteImageObserver(this)
     }
@@ -169,6 +177,11 @@ class DatabaseManager :
         return allReservedEventsList
     }
 
+    @JvmName("getAllHistoryEvents")
+    fun getAllHistoryEvents() : List<Event> {
+        return allHistoryEventsList
+    }
+
     @JvmName("createActivity")
     fun createEvent(event: Event) {
         Log.d(Constants.TAG_COMMON, "creating event")
@@ -188,13 +201,22 @@ class DatabaseManager :
         eventInsertForUserReference
             .child(event.id)
             .setValue(event)
-            .addOnCompleteListener(eventInsertListener)
+            .addOnCompleteListener(dataInsertListener)
     }
 
     @JvmName("updateEvent")
     fun updateEvent(event: Event, imageUrl : String) {
         this.event = event
         storeManager.uploadImage(event.id, imageUrl)
+    }
+
+    @JvmName("updateUser")
+    fun updateUser(user : User) {
+        Log.d(Constants.TAG_COMMON, "updating user")
+        userReference
+            .child(user.id)
+            .setValue(user)
+            .addOnCompleteListener(dataInsertListener)
     }
 
     @JvmName("deleteEvent")
@@ -210,7 +232,7 @@ class DatabaseManager :
         eventDeleteForUserReference
             .child(event.id)
             .setValue(event)
-            .addOnCompleteListener(eventDeleteListener)
+            .addOnCompleteListener(dataDeleteListener)
     }
 
     @JvmName("joinEvent")
@@ -222,7 +244,7 @@ class DatabaseManager :
             allEventsReference
                 .child(event.id)
                 .setValue(event)
-                .addOnCompleteListener(eventInsertListener)
+                .addOnCompleteListener(dataInsertListener)
         }
     }
 
@@ -246,7 +268,7 @@ class DatabaseManager :
                 .child(event.id)
                 .child(Constants.DATABASE_REVIEWS)
                 .setValue(reviewList)
-                .addOnCompleteListener(eventInsertListener)
+                .addOnCompleteListener(dataInsertListener)
         }
     }
 
@@ -272,7 +294,6 @@ class DatabaseManager :
             return false
     }
 
-
     private fun isEventCollide(event1: Event, eventList: List<Event>): Boolean {
         for (event in eventList) {
             if (isEventCollide(event1, event)) {
@@ -283,10 +304,19 @@ class DatabaseManager :
     }
 
     private fun setUserReference(id : String) {
-        userReference.child(id).addValueEventListener(userReferenceListener)
+        userReference
+            .child(id)
+            .addValueEventListener(userReferenceListener)
     }
 
-    private fun updateUser(user : User) {
+    private fun createUser(user : User) {
+        user.password = "" //por seguridad eliminamos el password del usuario
+        userReference
+            .child(user.id)
+            .setValue(user).addOnCompleteListener(dataInsertListener)
+    }
+
+    private fun updateUserData(user : User) {
         UserSingleton.getInstance().setUser(user)
         notifyUserUpdateObservers(user)
 
@@ -298,11 +328,11 @@ class DatabaseManager :
         eventInsertForUserReference.removeEventListener(eventsFromUserListener)
     }
 
-    override fun addUserUpdateObservable(observer: DatabaseManagerObserver.UserUpdateObserver) {
+    override fun addUserUpdateObservable(observer: DatabaseObserver.UserUpdateObserver) {
         updateObserverList.add(observer)
     }
 
-    override fun removeUserUpdateObservable(observer: DatabaseManagerObserver.UserUpdateObserver) {
+    override fun removeUserUpdateObservable(observer: DatabaseObserver.UserUpdateObserver) {
         updateObserverList.remove(observer)
     }
 
@@ -312,11 +342,11 @@ class DatabaseManager :
         }
     }
 
-    override fun addEventInsertObservable(observer: DatabaseManagerObserver.EventInsertObserver) {
+    override fun addEventInsertObservable(observer: DatabaseObserver.EventInsertObserver) {
         eventInsertObserverList.add(observer)
     }
 
-    override fun removeEventInsertObservable(observer: DatabaseManagerObserver.EventInsertObserver) {
+    override fun removeEventInsertObservable(observer: DatabaseObserver.EventInsertObserver) {
         eventInsertObserverList.remove(observer)
     }
 
@@ -327,11 +357,11 @@ class DatabaseManager :
         }
     }
 
-    override fun addEventUpdateObservable(observer: DatabaseManagerObserver.EventUpdateObserver) {
+    override fun addEventUpdateObservable(observer: DatabaseObserver.EventUpdateObserver) {
         eventsFromUserObserverList.add(observer)
     }
 
-    override fun removeEventUpdateObservable(observer: DatabaseManagerObserver.EventUpdateObserver) {
+    override fun removeEventUpdateObservable(observer: DatabaseObserver.EventUpdateObserver) {
         eventsFromUserObserverList.remove(observer)
     }
 
@@ -342,11 +372,11 @@ class DatabaseManager :
         }
     }
 
-    override fun addEventsObservable(observer: DatabaseManagerObserver.EventsObserver) {
+    override fun addEventsObservable(observer: DatabaseObserver.EventsObserver) {
         allEventsObserverList.add(observer)
     }
 
-    override fun removeEventsObservable(observer: DatabaseManagerObserver.EventsObserver) {
+    override fun removeEventsObservable(observer: DatabaseObserver.EventsObserver) {
         allEventsObserverList.remove(observer)
     }
 
@@ -357,11 +387,11 @@ class DatabaseManager :
         }
     }
 
-    override fun addEventDeleteObservable(observer: DatabaseManagerObserver.EventDeleteObserver) {
+    override fun addEventDeleteObservable(observer: DatabaseObserver.EventDeleteObserver) {
         eventDeleteObserverList.add(observer)
     }
 
-    override fun removeEventDeleteObservable(observer: DatabaseManagerObserver.EventDeleteObserver) {
+    override fun removeEventDeleteObservable(observer: DatabaseObserver.EventDeleteObserver) {
         eventDeleteObserverList.remove(observer)
     }
 
@@ -378,13 +408,19 @@ class DatabaseManager :
         }
     }
 
+    override fun notifyAuthCreationObservers(isSuccessful: Boolean, message: Any?) {
+        if(isSuccessful) {
+            UserSingleton.getInstance().getUser()?.let { user -> createUser(user) }
+        }
+    }
+
     override fun notifyUploadImageObservers(isSuccessful: Boolean, url: String) {
         if(isSuccessful) {
             event.image = url
             eventInsertForUserReference
                 .child(event.id)
                 .setValue(event)
-                .addOnCompleteListener(eventInsertListener)
+                .addOnCompleteListener(dataInsertListener)
         } else {
             notifyEventInsertObservers(false)
         }
@@ -395,7 +431,7 @@ class DatabaseManager :
             eventDeleteForUserReference
                 .child(event.id)
                 .removeValue()
-                .addOnCompleteListener(eventDeleteListener)
+                .addOnCompleteListener(dataDeleteListener)
         } else {
             notifyEventInsertObservers(false)
         }
